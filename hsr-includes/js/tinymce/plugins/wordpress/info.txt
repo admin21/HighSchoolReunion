@@ -1,0 +1,6 @@
+plugin: 			wordpress
+
+toolbar buttons: 	wp_more(adds <!--more-->), 
+					wp_page(adds <!--nextpage-->), 
+					wp_htlp(adds wordpress help menu), 
+					wp_adv(adds kitchen sink btn)
