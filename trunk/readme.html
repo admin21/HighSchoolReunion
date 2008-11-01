@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>High School Reunion Readme</title></head>
+
+<body style="width:600px;">
+<div id="install">
+<h1>Installation </h1>
+<ol>
+  <li>Unzip to temporary location</li>
+  <li>Create MySQL database</li>
+  <li>modify hsr-config-sample.php with MySQL information</li>
+  <li>rename hsr-config-sample.php to hsr-config.php</li>
+  <li>upload files to location on web server</li>
+  <li>point browser to installation file (http://install location/hsr-admin/install.php)</li>
+  <li>go through installation</li>
+  <li>click login link</li>
+  <li>done</li>
+</ol>
+</div>
+<div id="faq">
+<h1>FAQ</h1>
+<p><strong>Why do I get an error message when uploading or deleting a logo?<br />
+</strong>The web user, or the account that owns the web files does not have permission to write to the hsr-config folder.<br />
+</p>
+</div>
+<div id="themecreator">
+<h1>Theme Creation Guide</h1>
+<p>The process of creating a theme for High School Reunion is very simple. All themes reside in their own folder withing the <code>hsr-content/themes/</code> folder. For example, the path to the default theme is <code>hsr-content/themes/default/</code>. A theme requires only a few files. You really only need an <code>index.php</code>, a <code>page.php</code>, and a <code>screenshot.jpg</code> file, although a stylesheet is recommended. </p>
+<p>The <code>index.php</code> will be the homepage of your alumni site and should have a link to the login page or a include the login form. It should also have a link to the registration page and the forgotten password form. </p>
+<p>The <code>page.php</code> file will be used to display information about any events or additional pages that are created with High School Reunion. </p>
+<p>The <code>screenshot.jpg</code> file will be used to display a screenshot thumbnail of the image on the theme selection page.</p>
+<p>Some optional pages that we recommend are a <code>header.php</code> file, so you can include a standard header on everypage. A <code>footer.php</code> file would also be a good idea for including a standard footer on every page. We also like to include a <code>sidebar.php</code> file. Also, as mentioned earlier, you will probably want to use a CSS stylesheet.</p>
+<h2>Let's Start Already</h2>
+<p>There are some very simple functions that you will need to include:</p>
+<ul>
+  <li>get_option('option_name')</li>
+  <li>stylesheet_dir()</li>
+  <li>post_links(), <small>post_links(false) will remove a link to the homepage</small></li>
+  <li>admin_link()</li>
+  <li>all_new_members()</li>
+  <li>the_title()</li>
+  <li>the_entry()</li>
+  <li>the_date()</li>
+  </ul>
+<p>Refer to the included templates to see how these are used in a real theme. You can use the_title(), the_entry(), and the_date() in your <code>page.php</code> file.</p>
+<h2>I can't understand the PHP!</h2>
+<p>If you don't want to worry about using the PHP functions you can just modify the default theme's stylesheet. This theme was created for the purpose of having an easily customizable stylesheet. You can also check out the support forums for help.</p>
+</div>
+<div id="priv_policy">
+<h1>Privacy Policy </h1>
+<p>Below are some important issues you should take into consideration when writing your company&rsquo;s Privacy Policy:</p>
+<p>1) Explain what types of information you collect and how you use it<br /></p>
+<p>Provide reassurance. Clearly explain what types of information you ask from your visitors for and what you are going to do with such information. Besides personal information, what other information do you keep track of? Do you collect information from children? How do you verify parental consent for information about their children? Remember that information is power and although about two thirds of Internet users might be willing to accept a guarantee that you will not abuse their privacy, the other quarter feels extremely nervous about the way their personal information might be used. Therefore, if your web site mines raw transaction data to identify visitors, to come up with new offers, or to sell their names to merchandisers, you will need to explain how you share that information within your own family of companies and outside, or else you will very likely face serious legal problems. </p>
+<p> 2) Explain why your server and online operations are secure</p>
+<p>Now you have already told people what information you ask for and what you do with it, but that is just the tip of the iceberg. Next you will have to explain what makes your server and online operations secure. You probably do not want to be caught with no answer when confronted with questions such as, &lsquo;How do you make sure nobody steals my credit card information?&rsquo; or &lsquo;How do you protect the privacy of my emails to your customer support team?&rsquo; Point out how your consumers can tell if they are really on a secure server, i.e. the change in the URL, the icons that show up on the status bar, etc. You may even take a shot at explaining encryption, and the Secure Sockets Layer. Most importantly, concentrate on the benefits to the consumer, for in the end, most of them will not care less about all the security measures you take and all the money you spend to make your website secure, unless that translates into some specific benefits to them.</p>
+<p>3) Let customers out</p>
+<p> When people read your Privacy Policy for the first time, they will want to know how they can start or stop receiving email from you. Giving customers an opt-in and opt-out option is a great way to build trust and lower their personal barriers. However, you must be aware that people&rsquo;s needs, desires and interests might change over time and despite the fact that no one likes to lose a customer, you must let them go if they state that they are no longer interested in receiving your emails. In order to protect your customers&rsquo; privacy, you must give them access to their personal profile or account, and let them delete themselves. Since one of the biggest invasions of privacy is spam, one of the organizations created to fight spam called The Anti SPAM League considers that it is a good idea to allow people to opt into your e-mail newsletter twice - once by clicking the checkbox and Submit button, and again by responding to the e-mail notification that they can subscribe if they reply -. Double opt-in makes it more likely that people know what they are doing when they volunteer for the email. Remember to include an &lsquo;unsubscribe&rsquo; option at the bottom of each newsletter you email to your customer base. Of course, if most of your customers request to be removed from your mailing list then you will have a much more serious problem because your business will be in danger. But still, you must always give your customers a way out.</p>
+<p> 4) Let customers view and edit their personal information</p>
+<p> If you give people the opportunity to view and edit their information, chances are they will provide even more. The reasoning under this is pretty basic: almost no one destroys his or her own data. Therefore, whenever you display customers&rsquo; personal information, place clear and visible labels indicating how they can edit it. Be clear about how they can view and edit their information, i.e. &lsquo;You can access all your personally identifiable information that we collect online by logging in and clicking the &lsquo;Change User Info&rsquo; link in the box on the right-hand side of every page&rsquo;. Also, answer questions that might be of extreme importance to some customers such as, &lsquo;Can I review information you have about my child?&rsquo;.</p>
+<p>5) Inform customers about policy changes</p>
+<p>Most businesses revise their Privacy Policies from time to time. If you are among these businesses, inform your customers how they can have access to those changes and revisions. For example, include a sentence in your Privacy Policy such as, &lsquo;New versions will be posted on this web site, so please check back periodically for updates&rsquo;.</p>
+<p>6) Tell your customers who to contact in case they have questions about privacy</p>
+<p> Sometimes people might have some specific questions that are not explicitly covered in your Privacy Policy. For example, where they can learn more about their right to privacy or who they can talk to if they have a question about their privacy. Always include one or more ways in which customers can contact you regarding privacy issues. This contributes a lot in terms of reassurance. </p>
+<p>7) Write a privacy policy that people can understand</p>
+<p> Last, but not least, this issue can make the whole difference between a trusted business and one that may look OK, but deep inside you feel you cannot trust. Unfortunately, most Privacy Policies are written by lawyers and consequently, contain way too many technicalities. We do not question the value of legal terminology, but we greatly emphasize the fact that a Privacy Policy does not need to sound too serious or elegant. It just needs to be clear and simple, so that any average consumer can understand it without much effort. If you use industry or in-house jargon without explanation you make readers suspect that you are trying to pull the wool over their eyes and the final result debilitates the whole purpose of the policy, which is to build trust. Sure you will have to talk about your security precautions, but refer to them in plain English before you mention tech words that most people do not understand.</p>
+</div>
+</body>
+</html>
