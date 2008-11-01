@@ -6,7 +6,7 @@ $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 
 $menus 				=		array
 (
-	
+
 	"Dashboard"		=>		array
 	(
 		0				=>		$site_root . "hsr-admin/index.php"
