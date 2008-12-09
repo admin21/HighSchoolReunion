@@ -12,10 +12,10 @@ function user_change_password() {
 		if (strlen($_POST['new_password1']) >= 6) {
 			// Is the old password correct?
 			if (strlen($_POST['old_password']) > 1) {
-				$change_user_name = strtolower($_COOKIE['user_name']);
-				$old_password = strtolower($_POST['old_password']);
+				$change_user_name = $_COOKIE['user_name'];
+				$old_password = $_POST['old_password'];
 					$crypt_pass = md5($old_password.$hash_padding);
-					$new_password1 = strtolower($_POST['new_password1']);
+					$new_password1 = $_POST['new_password1'];
 					$query = "SELECT *
 							FROM users
 							WHERE user_name = '$change_user_name'
@@ -54,7 +54,7 @@ function user_change_password() {
 
 function user_change_email() {
 	global $hash_padding, $site_root, $site_name, $noreply;
-//	if (validate_email($_POST['new_email'])) {
+	if (validate_email($_POST['new_email'])) {
 		$hash = md5($_POST['new_email'].$hash_padding);
 		
 		// Send out a new confirm email with a new hash
@@ -73,29 +73,37 @@ function user_change_email() {
 			return $feedback;
 		} else {
 			// Send the confirmation email
-			$encoded_email = urlencode($_POST['new_email']);
+			$encoded_email = urlencode($_POST['email']);
+			$from = $noreply;
 			$link = $site_root . 'hsr-admin/confirm.php?hash=' . $hash . '&email=' . $encoded_email;
 			$mail_body = <<<EOMAILBODY
-	Thank you for registering at $site_name. Click this link to
-	confirm your registration:
-	
-	$link
-	
-	Once you see a confirmation message, you will be logged
-	into $site_name.
+<html>
+<body>
+<p>Thank you for registering at $site_name. Click this link to
+confirm your registration:</p>
+
+<p><a href="$link">$link</a></p>
+
+<p>Once you see a confirmation message, you will be logged
+into $site_name.</p>
+</body>
+</html>
 EOMAILBODY;
-		
-		mail("$email", "$site_name Registration Confirmation",
-			"$mail_body", "From:$noreply");	
-		// If you use email rather than password cookies, 
-		// uncomment the following line
+
+			$headers = "From: $from\r\n";
+			$headers .= "Content-type: text/html\r\n";
+			$headers .= "Reply-to: $from\r\n";
+			$headers .= "X-Mailer: PHP/" . phpversion();
+
+		mail("$email", "New Email Confirmation", "$mail_body", "$headers");
+		// If you use email rather than password cookies, uncomment the following line
 		// user_set_tokens($user_name);
 		return 1;
 	}
-//} else {
-//	$feedback = 'ERROR: New email address is invalid';
-//	return $feedback;
-//	}
+} else {
+	$feedback = 'ERROR: New email address is invalid';
+	return $feedback;
+	}
 }
 
 ?>

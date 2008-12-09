@@ -23,18 +23,19 @@ if ($_POST['command'] == 'forgot' &&
 	$is_user = mysql_num_rows($result);
 	
 	if ($is_user == 1) {
-		// Generate a random password
-		$alphanum =
-	array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
-		'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '2', '3', '4', '5', 
-		'6', '7', '8', '9');
-			$chars = sizeof($alphanum);
-			$a = time();
-			mt_srand($a);
-			for ($i=0; $i < 6; $i++) {
-				$randnum = intval(mt_rand(0,56));
-				$password .= $alphanum[$randnum];
-			}
+	// Generate a random password
+	$alphanum =
+		array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 
+		'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E',
+		'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+		'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+	$chars = sizeof($alphanum);
+	$a = time();
+	$password = mt_srand($a);
+	for ($i=0; $i < 6; $i++) {
+		$randnum = intval(mt_rand(0,60));
+		$password .= $alphanum[$randnum];
+	}
 			// One-way encrypt it
 			$crypt_pass = md5($password.$hash_padding);
 			
@@ -50,18 +51,23 @@ if ($_POST['command'] == 'forgot' &&
 			$from		= $noreply;
 			$subject	= "New Password";
 			$msg		= <<<EOMSG
-		You recently requested that we send you a new password for
-		$site_name.  Your new password is:
+You recently requested that we send you a new password for
+$site_name.  Your new password is:
+
+		$password
 		
-				$password
-				
-		Please log in at this URL:
-		
-				$site_root.hsr-admin/login.php'
+Please log in at this URL:
+
+		$site_root.tse-admin/login.php
 		
 EOMSG;
+
+			$headers = "From: $from\r\n";
+			$headers .= "Content-type: text/html\r\n";
+			$headers .= "Reply-to: $from\r\n";
+			$headers .= "X-Mailer: PHP/" . phpversion();
 		
-			$mailsend = mail("$to", "$subject", "$msg", "From:$noreply");
+			mail("$to", "$subject", "$msg", "$headers");
 				
 			// Redirect to login
 			header("Location: login.php");

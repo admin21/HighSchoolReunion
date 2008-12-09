@@ -45,7 +45,7 @@ if (!$_POST['user_name'] || !$_POST['password']) {
 	// Don't need to trim because extra spaces should fail
 	// for this. Don't need to addslahses because single 
 	// quotes aren't allowed.
-	$password = strtolower($_POST['password']);
+	$password = $_POST['password'];
 	// Don't need to addlashes because we'll be hashing it
 	$crypt_pwd = md5($password.$hash_padding);
 	$query = "SELECT user_name, is_confirmed

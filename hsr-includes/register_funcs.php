@@ -6,6 +6,7 @@ function user_register() {
 	// This function will only work with superglobal arrays,
 	// because I'm not passing in any values or declaring globals
 	global $hash_padding, $site_name, $site_root, $noreply;
+
 if (!empty($_POST['grad_year2'])) {
 	$grad_year = $_POST['grad_year2'];
 } else {
@@ -31,15 +32,18 @@ if (!empty($_POST['grad_year2'])) {
 						FROM users
 						WHERE user_name = '$user_name'";
 				$result1 = mysql_query($query1);
-				$query1 = "SELECT user_id
+				$query2 = "SELECT user_id
 						FROM users
 						WHERE email = '$email'";
 				$result2 = mysql_query($query2);
-				if ($result1 && mysql_num_rows($result1) > 0 || $result2 && mysql_num_rows($result) > 0) {
-				$feedback = 'ERROR: Username or email address already
-					exists';
+				if ($result1 && mysql_num_rows($result1) > 0) {
+				$feedback = 'ERROR: Username Already Exists';
 				return $feedback;
-				} else {
+				} elseif ($result2 && mysql_num_rows($result2) > 0) {
+				$feedback = 'ERROR: Email Address Already Exists';
+				return $feedback;
+	
+			} else {
 				$user_name = $_POST['user_name'];
 				$first_name = $_POST['first_name'];
 				$maiden_name = $_POST['maiden_name'];
@@ -66,18 +70,28 @@ if (!empty($_POST['grad_year2'])) {
 				} else {
 					// Send the confirmation email
 					$encoded_email = urlencode($_POST['email']);
+					$from = $noreply;
 					$link = $site_root . 'hsr-admin/confirm.php?hash=' . $hash . '&email=' . $encoded_email;
 					$mail_body = <<<EOMAILBODY
-Thank you for registering at $site_name. Click this link
-to confirm your registration.
+<html>
+<body>
+<p>Thank you for registering at $site_name. Click this link
+to confirm your registration.</p>
 
-$link
+<p><a href="$link">$link</a></p>
 
-Once you see a confirmation message, you will be logged into
-$site_name.
+<p>Once you see a confirmation message, you will be logged into
+$site_name.</p>
+</body>
+</html>
 EOMAILBODY;
-		mail ("$email", "$site_name Registration Confirmation",
-			"$mail_body", "From:$noreply");
+
+			$headers = "From: $from\r\n";
+			$headers .= "Content-type: text/html\r\n";
+			$headers .= "Reply-to: $from\r\n";
+			$headers .= "X-Mailer: PHP/" . phpversion();
+
+		mail("$email", "$site_name Registration Confirmation", "$mail_body", "$headers");
 
 
 	// Give a successful registration message
