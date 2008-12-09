@@ -10,6 +10,6 @@
 	require('hsr-includes/themes.php');
 	
 	//Settings
-	define('VERSION', '.70'); //HSR Version
+	define('VERSION', '.71'); //HSR Version
 
 ?>
