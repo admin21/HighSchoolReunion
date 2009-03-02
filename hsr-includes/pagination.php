@@ -295,8 +295,8 @@ function pagination_four($total_pages,$page){
         //
         // e.g. $max-$shirt+1 = shifting page
     
-        $max = 20;
-        $shift = 10;
+        $max = 10;
+        $shift = 5;
         
         
         //used in the loop
@@ -337,8 +337,8 @@ function pagination_four($total_pages,$page){
 
             //first and prev buttons
         if($page>'1'){
-            $pagination.= '<li class="current"><a href="'.$webpage.'?page=1">&laquo; First</a></li>
-                            <li class="current"><a href="'.$webpage.'?page='.($page-1).'">&laquo; Prev</a> |</li>
+            $pagination.= '<li class="current"><a href="'.$webpage.'?page='.($page-1).'">&laquo; Prev</a> | </li>
+							<li class="current"><a href="'.$webpage.'?page=1">1</a></li> ... 
                           ';
         }
         
@@ -362,8 +362,8 @@ function pagination_four($total_pages,$page){
         }
         //next and last buttons
         if(($page >='1')&&($page!=$total_pages)){
-            $pagination.= '| <li class="current"><a href="'.$webpage.'?page='.($page+1).'">Next &raquo;</a></li>
-                          <li class="current"><a href="'.$webpage.'?page='.$total_pages.'">Last &raquo;</a></li>
+            $pagination.= ' ... <li class="current"><a href="'.$webpage.'?page='.$total_pages.'">'.$total_pages.'</a></li> 
+						  | <li class="current"><a href="'.$webpage.'?page='.($page+1).'">Next &raquo;</a></li>
                           ';
         }
     }

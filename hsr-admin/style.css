@@ -339,7 +339,10 @@ table tr.alt {
 	
 a.current {
 	color: #000000;
+	padding: 5px;
+	font-size: 24px;
 	}
+	
 /******PAGINATION******/
 	
 .welcome {

@@ -1,6 +1,6 @@
 <?php global $first_name, $site_name, $site_root; ?>
 <div id="header">
-<div class="welcome">Hey <?php echo $first_name; ?>! [<a href="<?php echo $site_root; ?>" title="Go back to <?php echo $site_name; ?>">View Site</a>,  <a href="invite.php">Invite</a>,  <?php hsr_loginout(); ?>]</div>
+<div class="welcome">Hey <?php echo $first_name; ?>! [<a href="<?php echo $site_root; ?>" title="Go back to <?php echo $site_name; ?>">View Site</a>,  <a href="invite.php">Invite Classmates</a>,  <?php hsr_loginout(); ?>]</div>
 	<div class="logo"><?php if(is_logo()) { echo get_currentlogo(); } ?></div><h1><?php echo $site_name; ?></h1>
 	<div style="clear:all"></div>
 <?php 
