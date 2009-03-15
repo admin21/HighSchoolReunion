@@ -2,6 +2,12 @@
 
 require('hsr-config.php'); 
 
+
+if (!is_alum_installed()) {
+	header("Location: hsr-admin/install.php");
+	exit();
+}
+
 $query = "SELECT * FROM options WHERE option_name = 'theme'";
 $result = mysql_query($query);
 while ($row = mysql_fetch_array($result)) {
