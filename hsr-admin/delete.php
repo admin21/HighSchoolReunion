@@ -2,6 +2,8 @@
 
 include('../hsr-config.php');
 
+$ref = $_SERVER['HTTP_REFERER'];
+
 if (user_can(2) || $_GET['id'] == get_userid()) {
 
 $type = $_GET['type'];
@@ -9,41 +11,41 @@ $type = $_GET['type'];
 switch($type) {
 	case 'posts':
 
-$id = $_GET['id'];
+	$id = $_GET['id'];
 
 	$query = "DELETE FROM posts WHERE id = '$id'";
 	$result = mysql_query($query);
-	header("Location: manage-posts.php");
+	header("Location: $ref");
 	
 	break;
 	
 	case 'links':
 	
-$id = $_GET['id'];
+	$id = $_GET['id'];
 
 	$query = "DELETE FROM links WHERE id = '$id'";
 	$result = mysql_query($query);
-	header("Location: manage-links.php");
+	header("Location: $ref");
 	
 	break;
 	
 	case 'users':
 	
-$id = $_GET['id'];
+	$id = $_GET['id'];
 
 	if ($id != 1) {
 	$query = "DELETE FROM users WHERE user_id = '$id'";
 	$result = mysql_query($query);
 	}
-	header("Location: manage-users.php");
+	header("Location: $ref");
 	
 	break;
 	
 	case 'ownuser':
 	
-$id = $_GET['id'];
+	$id = $_GET['id'];
 
-	if ($id !=1) {
+	if ($id != 1) {
 	$query = "DELETE FROM users WHERE user_id = '$id'";
 	$result = mysql_query($query);
 	header("Location: login.php");
