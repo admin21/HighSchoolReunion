@@ -89,7 +89,7 @@ switch($step) {
 		$admin_email = stripslashes($_POST['admin_email']);
 		$pass1 = $_POST['admin_password1'];
 		$pass2 = $_POST['admin_password2'];
-		$site_root = $_POST['site_root'];
+		$site_root = format_root($_POST['site_root']);
 		$noreply = $_POST['noreply'];
 		$crypt_pass = md5($pass1.$hash_padding);
 		$user_ip = $_SERVER['REMOTE_ADDR'];
