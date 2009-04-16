@@ -15,11 +15,11 @@ function site_head($title) {
 		mode : "textareas",
 		theme : "advanced",
 		skin : "o2k7",
-		plugins : "safari,iespell,inlinepopups,media,searchreplace,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,wordpress,xhtmlxtras",
+		plugins : "safari,inlinepopups,media,contextmenu,paste,directionality",
 
 		// Theme options
-		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,iespell,|,justifyleft,justifycenter,justifyright,justifyfull,|,link,unlink,|,bullist,numlist,|,fullscreen,wp_adv",
-		theme_advanced_buttons2 : "formatselect,removeformat,|,cut,copy,pastetext,pasteword,|,outdent,indent,|,blockquote,charmap,|,image,media,|,code,help",
+		theme_advanced_buttons1 : "formatselect,|,bold,italic,underline,strikethrough,|,cut,copy,pastetext,|,justifyleft,justifycenter,justifyright,justifyfull,|,link,unlink,|,bullist,numlist,|,outdent,indent,|,|,image,media,|,code,help",
+		theme_advanced_buttons2 : "",
 		theme_advanced_buttons3 : "",
 		theme_advanced_buttons4 : "",
 		theme_advanced_toolbar_location : "top",
