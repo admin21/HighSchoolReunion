@@ -169,13 +169,15 @@ switch($step) {
 				('tagline', '$tagline', 'Short tagline'),
 				('site_root', '$site_root', 'The web address of this section of your site'),
 				('noreply', '$noreply', 'An email address used only to send user information'),
-				('priv_policy', 'You can have your own privacy policy or delete this', 'test'),
+				('priv_policy', 'You can have your own privacy policy or delete this', 'The Privacy Policy'),
 				('admin_message', '', 'A message from the administrator'),
 				('welcome_message', '<p>This is just a sample message. You can change it in a minute.</p>', 'HSR homepage text'),
 				('theme', 'default', 'The website theme'),
 				('dark_color', '#CC0000', 'The hex value of the dark color for the admin color scheme'),
 				('light_color', '#FF0000', 'The hex value of the light color for the admin color scheme'),
-				('logo', 'none', 'The name of the img file for the logo')"; 
+				('logo', 'none', 'The name of the img file for the logo'),
+				('homepage', 'none', 'If there is another page you want displayed as the homepage in the links.'),
+				('cur_vers', '.80', 'The current version of High School Reunion. Used for database updates')"; 
 	$result4 = mysql_query($query4);
 	
 	
