@@ -1,8 +1,4 @@
 <?php
-/************************************
-WordPress Style installation...
-new install coming soon! promise!
-************************************/
 
 include('../hsr-config.php');
 
