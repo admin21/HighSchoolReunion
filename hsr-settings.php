@@ -9,10 +9,9 @@
 	
 	//Settings
 	define('VERSION', '.8'); // HSR Version
-	define('BETABUILD', true); // is this a beta?
-	define('BUILDNUMBER', '79'); // HSR Build Number
+	define('BETABUILD', '81'); // Beta Build #
 	
-	define('DEBUGGING', false);
+	define('DEBUGGING', false); // Are we debugging?
 	
 	if(DEBUGGING) {
 		error_reporting(E_ALL);
