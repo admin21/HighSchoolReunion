@@ -793,4 +793,10 @@ function list_poststatus($id) {
 <?php  
  }
 
+function beta_build_number() {
+	if(BETABUILD) {
+		echo 'Build ' . BUILDNUMBER;
+	}
+}
+
 ?>

@@ -10,6 +10,8 @@
 	require('hsr-includes/themes.php');
 	
 	//Settings
-	define('VERSION', '.71'); //HSR Version
+	define('VERSION', '.8'); // HSR Version
+	define('BETABUILD', true); // is this a beta?
+	define('BUILDNUMBER', '79'); // HSR Build Number
 
 ?>
