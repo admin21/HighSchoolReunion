@@ -21,24 +21,29 @@ if ($_POST['command'] == 'forgot' &&
 			WHERE email = '$as_email'";
 	$result = mysql_query($query);
 	$is_user = mysql_num_rows($result);
+	$results = mysql_fetch_array($result);
 	
 	if ($is_user == 1) {
 		if ($_POST['forgot_type'] == 'username') {
 			// Forgot Username
-			$username = $result['user_name'];			
-			$subject = "New Password";
+			$username = $results['user_name'];			
+			$subject = "Forgotten Username";
+			$link = $site_root."hsr-admin/login.php";
 			$msg		= <<<EOMSG
+<html>
+<body>
+<p>
 You recently requested that we send your username for
-$site_name.  Your new username is:
+$site_name.  Your new username is:</p>
 
-		$username
+		<p><strong>$username</strong></p>
 		
-Please log in at this URL:
+<p>Please log in at this URL:</p>
 
-		$site_root.tse-admin/login.php
-		
+		<p>$link</p>
+</body>
+</html>	
 EOMSG;
-			$type = 'username';
 		} elseif($_POST['forgot_type'] == 'password') {
 			// Generate a random password
 			$alphanum =
@@ -66,23 +71,30 @@ EOMSG;
 				update');
 			
 			$subject = "New Password";
-			$msg		= <<<EOMSG
+			$link = $site_root."hsr-admin/login.php";
+			$msg	= <<<EOMSG
+<html>
+<body>
+<p>
 You recently requested that we send you a new password for
-$site_name.  Your new password is:
+$site_name.  Your new password is:</p>
 
-		$password
+		<p><strong>$password</strong></p>
 		
-Please log in at this URL:
+<p>Please log in at this URL:</p>
 
-		$site_root.tse-admin/login.php
-		
+		<p>$link</p>
+
+<p><strong>Note:</strong> We recommend that you login as soon
+as possible and change your password.</p>
+</body>
+</html>		
 EOMSG;
 		}
 				
 	// Send the email
 	$to			= $_POST['email'];
 	$from		= $noreply;
-	$subject	= "New " . $type;
 	$headers = "From: $from\r\n";
 	$headers .= "Content-type: text/html\r\n";
 	$headers .= "Reply-to: $from\r\n";
@@ -121,13 +133,13 @@ EOMSG;
 		registered.</i></p>
 		
 	  <form action="<?php echo $php_self; ?>" method="post">
-      	<input type="radio" name="forgot-type" value="username" checked="checked" id="forgot-type_0" /> Username
-      	<input type="radio" name="forgot-type" value="password" id="forgot-type_1" /> Password
+      	<input type="radio" name="forgot_type" value="username" checked="checked" id="forgot-type_0" /> Username
+      	<input type="radio" name="forgot_type" value="password" id="forgot-type_1" /> Password
         <br />
       	<input type="text" name="email"> 
-		<input type="hidden" name="password" value="forgot">
+		<input type="hidden" name="command" value="forgot">
 		<input type="submit" value="Go">
-		</form>
+	 </form>
 		
 		</td>
 		</tr>

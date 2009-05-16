@@ -10,5 +10,7 @@
 	mysql_connect($dbhost,$dbuser,$dbpass);
 	mysql_select_db($dbname);
 
-	require('hsr-settings.php');	
+	require('hsr-settings.php');
+	
+	error_reporting(E_ALL ^ E_NOTICE);
 ?>

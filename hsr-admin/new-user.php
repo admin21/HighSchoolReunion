@@ -13,7 +13,7 @@ site_head('New User');
 <form action="post.php" method="post">
 	<p class="bold">First Name<br />
 	<input type="text" name="firstname" size="20" maxlength="25"></p>
-	<p class="bold">Last Name <small>ex. (Maiden) Married</small><br />
+	<p class="bold">Last Name<br />
 		<input type="text" name="lastname" size="20" maxlength="25"></p>
 	<p class="bold">Username<br />
 		<input type="text" name="username" size="10" maxlength="25"></p>
