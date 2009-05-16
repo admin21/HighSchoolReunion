@@ -79,11 +79,11 @@ EOMSG;
 You recently requested that we send you a new password for
 $site_name.  Your new password is:</p>
 
-		<p><strong>$password</strong></p>
+<p><strong>$password</strong></p>
 		
 <p>Please log in at this URL:</p>
 
-		<p>$link</p>
+<p><a href="$link">$link</a></p>
 
 <p><strong>Note:</strong> We recommend that you login as soon
 as possible and change your password.</p>
@@ -94,7 +94,7 @@ EOMSG;
 				
 	// Send the email
 	$to			= $_POST['email'];
-	$from		= $noreply;
+	$from = "High School Reunion <" . $noreply . ">";
 	$headers = "From: $from\r\n";
 	$headers .= "Content-type: text/html\r\n";
 	$headers .= "Reply-to: $from\r\n";

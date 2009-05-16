@@ -74,7 +74,7 @@ function user_change_email() {
 		} else {
 			// Send the confirmation email
 			$encoded_email = urlencode($_POST['email']);
-			$from = $noreply;
+			$from = "High School Reunion <" . $noreply . ">";
 			$link = $site_root . 'hsr-admin/confirm.php?hash=' . $hash . '&email=' . $encoded_email;
 			$mail_body = <<<EOMAILBODY
 <html>
