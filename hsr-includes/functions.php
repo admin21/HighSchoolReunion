@@ -794,8 +794,8 @@ function list_poststatus($id) {
  }
 
 function beta_build_number() {
-	if(BETABUILD != '') {
-		echo 'Build ' . BETABUILD;
+	if(BUILDNUMBER != '') {
+		echo 'Build ' . BUILDNUMBER;
 	}
 }
 

@@ -9,7 +9,8 @@
 	
 	//Settings
 	define('VERSION', '.8'); // HSR Version
-	define('BETABUILD', '81'); // Beta Build #
+	define('BUILDNUMBER', '82'); // Working Beta Build #
+	// Remember to increment up after commit
 	
 	define('DEBUGGING', false); // Are we debugging?
 	
