@@ -19,7 +19,7 @@ site_head($header);
 <p>Message<br />
 <textarea class="content" name="message" cols="96" rows="15">
 <?php echo get_userfirstlastname(); ?> wants to invite you to register for 
-the alumni website <?php echo $site_name; ?>.
+the alumni website <?php echo sitename(); ?>.
 </textarea></p>
 <p align="right"><input name="send" type="submit" value="Send"></p>
 

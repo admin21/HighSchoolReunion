@@ -9,13 +9,13 @@ if (user_can(3)) {
 	switch($type) {
 	
 		case 'class_email':
-		global $noreply;
 		
 		$sender = get_useremail();
 
 		$subject = $_POST['subject'];
 		$message = $_POST['message'];
 		$address = class_maillist(get_theclass());
+		$noreply = noreply();
 		$headers = "From: $noreply";
 
 		mail($address, $subject, $message, $headers);
@@ -335,21 +335,33 @@ if (user_can(3)) {
 			$hr = ($_POST['hr'] + $_POST['ampm']);
 		}
 		
+		// Create timestamp
 		$due_date = mktime($hr, $min, 0, $month, $day, $yr);
-//		$due_date = $yr . "-" . $month . "-" . $day . " " . $hr . ":" . $min . ":00";
+		
+		// Save to database
+		$query = "INSERT INTO posts (post_author, post_date, post_status, event_class, post_title, post_slug, post_content, post_type, due_date)
+				VALUES ('$id', NOW(), 'review', '$class', '$title', '$slug', '$content', 'event', '$due_date')";
+		$result = mysql_query($query);
+		
+		// Post ID
+		$post_id = mysql_insert_id();
+		
+		// Mail to admin
+		$email = "betzster@gmail.com";
+		$body = newevent_msg($id);
+		$subject = "New Event Added";
+		mailer($email, $subject, $body);
 		
 		// Mail if box is checked
 		if ($_POST['email'] == 'checked') {
-		global $noreply;
 			$subject = $title;
 			$message = "Your Class has Scheduled a New Event - ". $class ."\n" . date('m/d/Y \@ g:i a', $due_date) . "\n\n" . $content;
 			$address = class_maillist($class);
+			$noreply = noreply();
 			$headers = "From:" . $noreply;
 			mail($address, $subject, $message, $headers);		
 		}
-		$query = "INSERT INTO posts (post_author, post_date, post_status, event_class, post_title, post_slug, post_content, post_type, due_date)
-				VALUES ('$id', NOW(), 'review', '$class', '$title', '$slug', '$content', 'event', '$due_date')";
-		$result = mysql_query($query);	
+			
 		header("Location: new-event.php");
 		}
 		break;
@@ -370,14 +382,14 @@ if (user_can(3)) {
 		
 		break;
 		
-		case 'invite':
-		global $site_root, $noreply; 
+		case 'invite': 
 		
 		$email = $_POST['email'];
 		$subject = get_userfirstlastname() . ' wants you to join';
 		$message = $_POST['message'];
-		$message .= '<p><a href="' . $site_root . 'hsr-admin/register.php">' . $site_root . 'hsr-admin/register.php</a></p>';
+		$message .= '<p><a href="' . siteroot() . 'hsr-admin/register.php">' . siteroot() . 'hsr-admin/register.php</a></p>';
 		$content = '<html><body>' . $message . '</body></html>';
+		$noreply = noreply();
 		$headers = 'From: ' . $noreply . "\r\n";
 		$headers .= 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html charset=iso-8859-1' . "\r\n";

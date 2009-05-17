@@ -16,7 +16,7 @@
 <p><small>Updated: 7/27/2008 | HSR Version .60</small></p>
 <?php
 include('hsr-config.php');
-echo '<h2>'.$site_name . ' Privacy Policy</h2>';
+echo '<h2>'. sitename() . ' Privacy Policy</h2>';
 $query = "SELECT option_value FROM options WHERE option_name = 'priv_policy'";
 $result = mysql_query($query);
 while ($row = mysql_fetch_array($result)) {

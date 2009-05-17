@@ -10,7 +10,7 @@ if (!user_isloggedin()) {
 
 $grad_year = $_GET['grad_year'];
 
-$header = $site_name . ' &raquo; ' . $grad_year;
+$header = sitename() . ' &raquo; ' . $grad_year;
 
 site_head($header);
 ?>

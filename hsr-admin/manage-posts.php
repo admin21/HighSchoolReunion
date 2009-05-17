@@ -38,7 +38,7 @@ $result = mysql_query($query);
 		echo "";
 	}
 }
-global $site_root;
+
 ?>
 <?php postnav(); ?>
 <div id="holder">
@@ -94,9 +94,9 @@ while($row = mysql_fetch_array($result))
 	  <td><?php echo $date ?></td>
 	  <td><?php echo $author; ?></td>
       <td><?php echo $status; ?></td>
-	  <td><a href="<?php echo $site_root ?>index.php?p=<?php echo $id ?>">View</a></td>
-	  <td><a href="<?php echo $site_root ?>hsr-admin/edit-post.php?id=<?php echo $id ?>">Edit</a></td>
-	  <td><a href="javascript:confirmdelete( 'posts', '<?php echo $site_root ?>', '<?php echo $title ?>', '<?php echo $id ?>' )">Delete</a></td>
+	  <td><a href="<?php echo siteroot() ?>index.php?p=<?php echo $id ?>">View</a></td>
+	  <td><a href="<?php echo siteroot() ?>hsr-admin/edit-post.php?id=<?php echo $id ?>">Edit</a></td>
+	  <td><a href="javascript:confirmdelete( 'posts', '<?php echo siteroot() ?>', '<?php echo $title ?>', '<?php echo $id ?>' )">Delete</a></td>
 	  </tr>
 <?php	} ?>
 

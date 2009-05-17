@@ -39,7 +39,7 @@ $result = mysql_query($query);
 	}
 }
 
-global $site_root, $page, $offset;
+global $page, $offset;
 usernav(); ?>
 <div id="holder">
 <div class="post-management">	
@@ -103,8 +103,8 @@ while($row = mysql_fetch_array($result))
 	  <td><?php echo $class ?></td>
 	  <td><?php echo $rank ?></td>
 	  <td><?php echo $status ?></td>
-	  <td><a href="<?php echo $site_root ?>hsr-admin/edit-user.php?id=<?php echo $id ?>">Edit</a></td>
-	  <td><a href="javascript:confirmdelete( 'users', '<?php echo $site_root ?>', '<?php echo $username ?>', '<?php echo $id ?>' )">Delete</a></td>
+	  <td><a href="<?php echo siteroot() ?>hsr-admin/edit-user.php?id=<?php echo $id ?>">Edit</a></td>
+	  <td><a href="javascript:confirmdelete( 'users', '<?php echo siteroot() ?>', '<?php echo $username ?>', '<?php echo $id ?>' )">Delete</a></td>
 	  </tr>
 <?php	} ?>
 

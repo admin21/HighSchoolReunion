@@ -40,7 +40,7 @@ $result = mysql_query($query);
 }
 	
 
-global $site_root, $page, $offset;
+global $page, $offset;
 linknav(); ?>
 <div id="holder">
 <div class="post-management">	
@@ -100,8 +100,8 @@ while($row = mysql_fetch_array($result))
 	  <td><?php echo $title2 ?></td>
 	  <td><?php echo $url2 ?></td>
 	  <td><?php echo $description2 ?></td>
-	  <td><a href="<?php echo $site_root ?>hsr-admin/edit-link.php?id=<?php echo $id ?>">Edit</a></td>
-	  <td><a href="javascript:confirmdelete( 'links', '<?php echo $site_root ?>', '<?php echo $title ?>', '<?php echo $id ?>' )">Delete</a></td>
+	  <td><a href="<?php echo siteroot() ?>hsr-admin/edit-link.php?id=<?php echo $id ?>">Edit</a></td>
+	  <td><a href="javascript:confirmdelete( 'links', '<?php echo siteroot(); ?>', '<?php echo $title ?>', '<?php echo $id ?>' )">Delete</a></td>
 	  </tr>
 <?php	} ?>
 

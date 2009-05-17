@@ -1,7 +1,6 @@
 <?php 
 
 include('../hsr-config.php');
-global $site_root;
 
 $ref = $_SERVER['HTTP_REFERER'];
 

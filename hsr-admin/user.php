@@ -10,7 +10,7 @@ if (!user_isloggedin()) {
 
 $username = $_GET['username'];
 
-$header = $site_name . ' &raquo; ' . $username;
+$header = sitename() . ' &raquo; ' . $username;
 
 site_head($header);
 ?>

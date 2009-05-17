@@ -7,7 +7,7 @@ if (user_can(3)) {
 
 ob_start();
 
-	$title = $site_name . ' Admin';
+	$title = sitename() . ' Admin';
 	
 	$username = $_COOKIE['user_name'];
 

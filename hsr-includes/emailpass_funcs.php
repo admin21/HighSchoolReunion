@@ -53,7 +53,7 @@ function user_change_password() {
 }
 
 function user_change_email() {
-	global $hash_padding, $site_root, $site_name, $noreply;
+	global $hash_padding;
 	$email = $_POST['new_email'];
 	if (validate_email($email)) {
 		$hash = md5($email.$hash_padding);

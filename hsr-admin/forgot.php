@@ -9,7 +9,7 @@
  
 require_once('../hsr-config.php');
 
-global $hash_padding, $noreply, $site_root;
+global $hash_padding;
 
 if ($_POST['command'] == 'forgot' &&
 	strlen($_POST['email'] <= 50)) {
@@ -28,7 +28,8 @@ if ($_POST['command'] == 'forgot' &&
 			// Forgot Username
 			$username = $results['user_name'];			
 			$subject = "Forgotten Username";
-			$link = $site_root."hsr-admin/login.php";
+			$link = siteroot()."hsr-admin/login.php";
+			$site_name = sitename();
 			$msg		= <<<EOMSG
 <html>
 <body>
@@ -71,7 +72,8 @@ EOMSG;
 				update');
 			
 			$subject = "New Password";
-			$link = $site_root."hsr-admin/login.php";
+			$link = siteroot()."hsr-admin/login.php";
+			$site_name = sitename();
 			$msg	= <<<EOMSG
 <html>
 <body>
@@ -94,6 +96,7 @@ EOMSG;
 				
 	// Send the email
 	$to			= $_POST['email'];
+	$noreply = noreply();
 	$from = "High School Reunion <" . $noreply . ">";
 	$headers = "From: $from\r\n";
 	$headers .= "Content-type: text/html\r\n";

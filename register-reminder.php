@@ -11,8 +11,6 @@
 
 include('hsr-config.php');
 
-global $site_root, $site_name, $noreply;
-
 $go = false;
 
 if ($go) {
@@ -23,7 +21,9 @@ while ($row = mysql_fetch_array($result)) {
 	$email = $row['email'];
 	$hash = $row['confirm_hash'];
 	$encoded_email = urlencode($email);
-	$link = $site_root . 'hsr-admin/confirm.php?hash=' . $hash . '&email=' . $encoded_email;
+	$link = siteroot() . 'hsr-admin/confirm.php?hash=' . $hash . '&email=' . $encoded_email;
+	$noreply = noreply();
+	$site_name = sitename();
 	$mail_body = <<<EOMAILBODY
 Remember, you registered at $site_name. You cannot use this service
 until you confirm your email address. Click this link to confirm 

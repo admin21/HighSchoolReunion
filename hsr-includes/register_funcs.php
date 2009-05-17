@@ -5,7 +5,7 @@ require_once('../hsr-config.php');
 function user_register() {
 	// This function will only work with superglobal arrays,
 	// because I'm not passing in any values or declaring globals
-	global $hash_padding, $site_name, $site_root, $noreply;
+	global $hash_padding;
 
 	if (!empty($_POST['grad_year2'])) {
 		$grad_year = $_POST['grad_year2'];
@@ -71,7 +71,7 @@ function user_register() {
 					} else {
 						// Send the confirmation email
 						$body = reg_msg($email);
-						$subject = $site_name . " Registration Confirmation";
+						$subject = sitename() . " Registration Confirmation";
 						mailer($email, $subject, $body);
 						
 						// Give a successful registration message

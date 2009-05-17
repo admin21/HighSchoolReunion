@@ -18,7 +18,7 @@ while($row = mysql_fetch_array($result))
 }
 
 function new_members($year) {
-global $site_root;
+
 echo '<ul>';
 $query = "SELECT * FROM users WHERE grad_year = '$year' ORDER BY date_created DESC LIMIT 10";
 $result = mysql_query($query);
@@ -29,13 +29,12 @@ if(!empty($row['maiden_name'])) {
 } else {
 	$lname = $row['last_name'];
 }
-	echo '<li><a href="' . $site_root . 'hsr-admin/user.php?username=' . $row['user_name'] . '">' . $row['first_name'] . ' ' . $lname . '</a></li>';
+	echo '<li><a href="' . siteroot() . 'hsr-admin/user.php?username=' . $row['user_name'] . '">' . $row['first_name'] . ' ' . $lname . '</a></li>';
 	}
 	echo '</ul>';
 }
 
 function all_new_members() {
-global $site_root;
 
 echo '<ul>';
 
@@ -49,7 +48,7 @@ while($row = mysql_fetch_array($result))
 		$lname = $row['last_name'];
 	}
 	
-	echo '<li><a href="' . $site_root . 'hsr-admin/user.php?username=' . $row['user_name'] . '">' . $row['first_name'] . ' ' . $lname . '(' . $row['grad_year'] . ') </a></li>';
+	echo '<li><a href="' . siteroot() . 'hsr-admin/user.php?username=' . $row['user_name'] . '">' . $row['first_name'] . ' ' . $lname . '(' . $row['grad_year'] . ') </a></li>';
 
 	}
 	
@@ -131,7 +130,6 @@ while($row = mysql_fetch_array($result))
 }
 
 function user_lastten($username) {
-global $site_root;
 
 $query = "SELECT grad_year FROM users WHERE user_name = '$username' LIMIT 1";
 $result = mysql_query($query);
@@ -144,17 +142,15 @@ while($row = mysql_fetch_array($result))
 }
 
 function hsr_loginout() {
-global $site_root;
 
  if (!user_isloggedin()) { 
-	echo '<a href="' . $site_root . 'hsr-admin/login.php">Login</a>'; 
+	echo '<a href="' . siteroot() . 'hsr-admin/login.php">Login</a>'; 
 } else {
-	echo '<a href="' . $site_root . 'hsr-admin/login.php">Logout</a>';
+	echo '<a href="' . siteroot() . 'hsr-admin/login.php">Logout</a>';
 }
 }
 
 function class_roster($year) {
-global $site_root;
 	
 	echo "<ul>";
 	
@@ -162,7 +158,7 @@ global $site_root;
 	$result = mysql_query($query);
 	while($row = mysql_fetch_array($result))
 		{
-		echo '<li><a href="' . $site_root . 'hsr-admin/user.php?username=' . $row['user_name'] . '">' . $row['last_name'] . ', ' . $row['first_name'] . '</a></li>';
+		echo '<li><a href="' . siteroot() . 'hsr-admin/user.php?username=' . $row['user_name'] . '">' . $row['last_name'] . ', ' . $row['first_name'] . '</a></li>';
 		}
 		
 	echo "</ul>";
@@ -170,9 +166,9 @@ global $site_root;
 	}
 	
 function class_link($grad_year) {
-global $site_root;
 
-		echo '<a href="' . $site_root . 'hsr-admin/class-roster.php?grad_year=' . $grad_year . '">' . $grad_year . '</a>';
+
+		echo '<a href="' . siteroot() . 'hsr-admin/class-roster.php?grad_year=' . $grad_year . '">' . $grad_year . '</a>';
 		echo '<br />';
 
 	}
@@ -251,7 +247,6 @@ function is_userevents() {
 	
 
 function user_upcoming_events() {
-global $site_root;
 	
 	echo "<table>";
 	echo "<tr>";
@@ -284,7 +279,7 @@ global $site_root;
 			  echo "<tr class=" . $oddcomment . ">";
 			  echo "<td>" . date('m/d/Y', $date) . "</td>";
 			  echo "<td>" . date('g:i a', $date) . "</td>";
-			  echo "<td width=\"200\"><a href=\"". $site_root . "index.php?p=" . $id . "\">" . $row['post_title'] . "</a></td>";
+			  echo "<td width=\"200\"><a href=\"". siteroot() . "index.php?p=" . $id . "\">" . $row['post_title'] . "</a></td>";
 			  echo "</tr>";
 	
 		}
@@ -294,7 +289,6 @@ global $site_root;
 }
 
 function upcoming_events() {
-global $site_root;
 
 	echo "<table>";
 	echo "<tr>";
@@ -321,7 +315,7 @@ global $site_root;
 		  echo "<tr class=" . $oddcomment . ">";
 		  echo "<td>" . date('m/d/Y', $date) . "</td>";
 		  echo "<td>" . date('g:i a', $date) . "</td>";
-		  echo "<td width=\"200\"><a href=\"". $site_root . "index.php?p=" . $id . "\">" . $row['post_title'] . "</a></td>";
+		  echo "<td width=\"200\"><a href=\"". siteroot() . "index.php?p=" . $id . "\">" . $row['post_title'] . "</a></td>";
 		  echo "</tr>";
 		}
 	
@@ -331,12 +325,9 @@ global $site_root;
 
 
 function post_links($home = true) {
-global $site_root;
-
-
 
 if($home) {
-echo "<span><a href=\"" . $site_root . "\">Alumni</a></span>";
+echo "<span><a href=\"" . siteroot() . "\">Alumni</a></span>";
 }
 
 $query = "SELECT * FROM posts WHERE post_type = 'page'";
@@ -345,23 +336,21 @@ while($row = mysql_fetch_array($result)) {
 	$id = $row['id'];
 	$title = $row['post_title'];
 	
-echo "<span><a href=\"" . $site_root . "index.php?p=" . $id . "\">" . $title . "</a></span>";
+echo "<span><a href=\"" . siteroot() . "index.php?p=" . $id . "\">" . $title . "</a></span>";
 	
 	}
 
 }
 
 function admin_link() {
-global $site_root;
 
 $username = $_COOKIE['user_name'];
 	if (!empty($username)) {
-	echo "<a href=\"" . $site_root . "hsr-admin/\">Dashboard</a>";
+	echo "<a href=\"" . siteroot() . "hsr-admin/\">Dashboard</a>";
 	}
 }
 
 function show_links() {
-global $site_root;
 
 $query = "SELECT * FROM links";
 $result = mysql_query($query);
@@ -660,9 +649,9 @@ function get_stylecolors($level = 'primary') {
 
 //Get the Logo URL
 function get_currentlogourl() {
-	global $site_root;
+	
 	$url = "hsr-content/uploads/logos/";
-	$url = $site_root . $url;
+	$url = siteroot() . $url;
 	
 	$query = "SELECT option_value FROM options WHERE option_name = 'logo' LIMIT 1";
 	$result = mysql_query($query);

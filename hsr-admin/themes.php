@@ -1,11 +1,11 @@
 <?php
 
-require_once('../hsr-includes/login_funcs.php');
+require_once('../hsr-config.php');
 include('header_footer.php');
 
 if (user_can(1)) {
 
-	$title = $site_name . ' Admin';
+	$title = sitename() . ' Admin';
 
 	site_head($title);
 	

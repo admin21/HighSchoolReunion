@@ -63,7 +63,7 @@ $php_self = $_SERVER['PHP_SELF'];
 
 </div>
 <div id="login-help">
-<p class="login-links"><a href="../index.php">Back to <?php echo $site_name; ?></a><br />
+<p class="login-links"><a href="../index.php">Back to <?php echo sitename(); ?></a><br />
 <a href="forgot.php">Forgot your Password?</a><br />
 <a href="register.php">New User?</a></p>
 </div>

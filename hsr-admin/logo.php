@@ -1,11 +1,11 @@
 <?php
 
-require_once('../hsr-includes/login_funcs.php');
+require_once('../hsr-config.php');
 include('header_footer.php');
 
 if (user_can(1)) {
 
-	$title = $site_name . ' Admin';
+	$title = sitename() . ' Admin';
 
 	site_head($title);
 	
@@ -36,7 +36,7 @@ if (substr($file, -4) == '.jpg' || substr($file, -4) == '.bmp' || substr($file, 
 ?>
 
 <div class="logos">
-<div class="title"><?php echo $file; ?> <a href="javascript:confirmdelete( 'logo', '<?php echo $site_root ?>', '<?php echo $file ?>', '<?php echo $file ?>' )"><img src="img/delete.jpg" /></a></div>
+<div class="title"><?php echo $file; ?> <a href="javascript:confirmdelete( 'logo', '<?php echo siteroot(); ?>', '<?php echo $file ?>', '<?php echo $file ?>' )"><img src="img/delete.jpg" /></a></div>
 <div class="logo"><a href="activate.php?l=<?php echo $file; ?>"><img src="../hsr-content/uploads/logos/<?php echo $file; ?>" alt="<?php echo $file ?>" /></a></div>
 </div>
 <?php endif; ?>
