@@ -5,13 +5,13 @@
  * from an email link.								*
  ****************************************************/
  
- require_once('../hsr-includes/register_funcs.php');
- include_once('header_footer2.php');
- require_once('../hsr-config.php');
+include_once('header_footer2.php');
+require_once('../hsr-includes/register_funcs.php');
+require_once('../hsr-config.php');
  
- site_head('Account Confirmation');
+site_head('Account Confirmation');
  
- if ($_GET['hash'] && $_GET['email']) {
+if ($_GET['hash'] && $_GET['email']) {
  	$worked = user_confirm();
 } else {
 	$feedback_str ="<p class=\"errormess\">ERROR: Bad link</p>";

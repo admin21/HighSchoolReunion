@@ -9,7 +9,7 @@
  *	visitors.											*
  ********************************************************/
 
-require_once('../hsr-includes/register_funcs.php');
+require_once('../hsr-config.php');
 
 if ($_POST['submit'] == 'Mail Confirmation') {
 	$feedback = user_register();
@@ -56,39 +56,39 @@ if ($_POST['submit'] == 'Mail Confirmation') {
 	<td>
 	
 	<?php echo $feedback_str ?>
-	<p class="left"><b>REGISTER</b><br />
+	<p><strong>REGISTER</strong><br />
 	Fill out this form and a confirmation email will be sent to you.
 	Once you click on the link in the email your account will be
 	confirmed and you can begin to contribute to the community.</p>
 	<form action="register.php" method="post">
-	<p class="bold">First Name<br />
+	<p>First Name<br />
 	  <input type="text" name="first_name" value="<?php echo $first_name ?>"
 		size="20" maxlength="25" />
 	</p>
-	<p class="bold">Maiden Name<br />
+	<p>Maiden Name<br />
 		<input name="maiden_name" type="text" id="maiden_name" value="<?php echo $last_name ?>"
 		size="20" maxlength="25">
 	</p>
-	<p class="bold">Last Name<br />
+	<p>Last Name<br />
 		<input type="text" name="last_name" value="<?php echo $last_name ?>"
 		size="20" maxlength="25"></p>
-	<p class="bold">Username<br />
+	<p>Username<br />
 		<input type="text" name="user_name" value="<?php echo $user_name ?>"
 		size="10" maxlength="25"></p>
-	<p class="bold">Graduation Year*<br />
+	<p>Graduation Year*<br />
     <?php grad_list_register() ?>
 <em><u>or</u></em>
     
 <input name="grad_year2" type="text" value="<?php echo $grad_year; ?>" size="5" maxlength="4" />
     <br />
 	</p>
-	<p class="bold">Password<br />
+	<p>Password<br />
 		<input type="password" name="password1" value=""
 		size="10" maxlength="25"></p>
-	<p class="bold">Password<br />
+	<p>Password<br />
 		<input type="password" name="password2" value=""
 		size="10" maxlength="25"></p>
-	<p class="left"><b>email</b> <small>(required for confirmation)</small><br />
+	<p>Email <small>(required for confirmation)</small><br />
 		<input type="text" name="email" value="<?php echo $email ?>"
 		size="30" maxlength="50"></p>	
 	<p><input type="submit" name="submit" value="Mail Confirmation">

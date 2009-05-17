@@ -1,8 +1,7 @@
 <?php
 
+include('../hsr-config.php');
 include('header_footer.php');
-require_once('../hsr-includes/login_funcs.php');
-
 
 if (user_can(3)) {
 

@@ -6,6 +6,7 @@
  
 require_once('../hsr-includes/emailpass_funcs.php');
 require_once('../hsr-includes/login_funcs.php');
+require_once('../hsr-includes/register_funcs.php');
 if (!user_isloggedin()) {
 	header("Location: index.php");
 }
@@ -13,8 +14,7 @@ if (!user_isloggedin()) {
 if ($_POST['submit'] == "Change my Email") {
 	$worked = user_change_email();
 	if ($worked == 1) {
-		$feedback_str = '<p class="errormess">A confirmation ' .
-			'email has been sent to you | <a href="index.php">Back</a></p>';
+		$feedback_str = '<p class="errormess">A confirmation email has been sent to you | <a href="index.php">Back</a></p>';
 		} else {
 			$feedback_str = "<p class \"errormess\">$feedback</p>";
 		}
@@ -38,13 +38,13 @@ if ($_POST['submit'] == "Change my Email") {
 <td>
 		<?php echo $feedback_str; ?>
 		<div id="admin-hold">
-		<p class=left><b>change your email address</b><br />
+		<p class=left><strong>Change your Email Address</strong><br />
 		A confirmation email will be sent to you.<br />
 		<form action="<?php echo $php_self; ?>" method="post">
-		<b>Password</b><br />
-		<input type="password" name="password1" value="" size="10"
+		<strong>Password</strong><br />
+		<input type="password" name="password" value="" size="10"
 			maxlenth="15"><br /><br />
-		<b>New email</b> (required for confirmation)<br />
+		<strong>New email</strong> (required for confirmation)<br />
 		<input type="text" name="new_email" value="" size="20"
 			maxlength="35"><br /><br />
 		<input type="submit" name="submit" value="Change my Email">

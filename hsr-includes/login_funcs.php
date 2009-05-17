@@ -1,7 +1,5 @@
 <?php
 
-include_once('../hsr-config.php');
-
 // A string used for md5 encryption. You could move it to
 // a file outside the web tree fro more security
 

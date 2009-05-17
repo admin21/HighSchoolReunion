@@ -1,6 +1,6 @@
 <?php
 
-include_once('../hsr-config.php');
+include('../hsr-config.php');
 
 function user_change_password() {
 	global $hash_padding;
@@ -54,55 +54,37 @@ function user_change_password() {
 
 function user_change_email() {
 	global $hash_padding, $site_root, $site_name, $noreply;
-	if (validate_email($_POST['new_email'])) {
-		$hash = md5($_POST['new_email'].$hash_padding);
+	$email = $_POST['new_email'];
+	if (validate_email($email)) {
+		$hash = md5($email.$hash_padding);
 		
 		// Send out a new confirm email with a new hash
 		$user_name = strtolower($_COOKIE['user_name']);
-		$password1 = strtolower($_POST['password1']);
-		$email = $_POST['new_email'];
-		$crypt_pass = md5($password1.$hash_padding);
+		$password = strtolower($_POST['password']);
+		$crypt_pass = md5($password.$hash_padding);
 		$query = "UPDATE users
 				SET confirm_hash = '$hash',
 					is_confirmed = 0
 				WHERE user_name = '$user_name'
 				AND password = '$crypt_pass'";
 		$result = mysql_query($query);
+
 		if (!$result || mysql_affected_rows() < 1) {
+		header('Location: error.php');
 			$feedback = 'ERROR: Wrong password';
 			return $feedback;
 		} else {
 			// Send the confirmation email
-			$encoded_email = urlencode($_POST['email']);
-			$from = "High School Reunion <" . $noreply . ">";
-			$link = $site_root . 'hsr-admin/confirm.php?hash=' . $hash . '&email=' . $encoded_email;
-			$mail_body = <<<EOMAILBODY
-<html>
-<body>
-<p>Thank you for registering at $site_name. Click this link to
-confirm your registration:</p>
-
-<p><a href="$link">$link</a></p>
-
-<p>Once you see a confirmation message, you will be logged
-into $site_name.</p>
-</body>
-</html>
-EOMAILBODY;
-
-			$headers = "From: $from\r\n";
-			$headers .= "Content-type: text/html\r\n";
-			$headers .= "Reply-to: $from\r\n";
-			$headers .= "X-Mailer: PHP/" . phpversion();
-
-		mail("$email", "New Email Confirmation", "$mail_body", "$headers");
-		// If you use email rather than password cookies, uncomment the following line
-		// user_set_tokens($user_name);
-		return 1;
-	}
-} else {
-	$feedback = 'ERROR: New email address is invalid';
-	return $feedback;
+			$body = newemail_msg($email);
+			$subject = "New Email Confirmation";
+			mailer($email, $subject, $body);
+			
+			return 1;
+		}
+		
+	} else {
+		$feedback = 'ERROR: New email address is invalid';
+		return $feedback;
 	}
 }
 
