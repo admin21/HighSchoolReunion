@@ -347,7 +347,7 @@ if (user_can(3)) {
 		$post_id = mysql_insert_id();
 		
 		// Mail to admin
-		$email = "betzster@gmail.com";
+		$email = adminemail();
 		$body = newevent_msg($id);
 		$subject = "New Event Added";
 		mailer($email, $subject, $body);

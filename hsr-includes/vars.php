@@ -34,6 +34,15 @@ function noreply() {
   	
   	return $noreply;
 }
+
+function adminemail() {
+	$query = "SELECT email FROM users WHERE user_id = '1' LIMIT 1";
+	$result = mysql_query($query);
+	$row = mysql_fetch_array($result);
+  	$mail = $row['email'];
+  	
+  	return $mail;
+}
 		
 // User Info
 function get_userinfo($type = 'user_name') {
