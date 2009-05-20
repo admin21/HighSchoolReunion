@@ -10,15 +10,14 @@ if (user_can(3)) {
 	
 		case 'class_email':
 		
-		$sender = get_useremail();
-
+		$from = get_username() . " <" . get_useremail() . ">";
+		
+		$to = class_maillist(get_theclass());
 		$subject = $_POST['subject'];
 		$message = $_POST['message'];
-		$address = class_maillist(get_theclass());
-		$noreply = noreply();
-		$headers = "From: $noreply";
+		$from = get_username() . " <" . get_useremail() . ">";
 
-		mail($address, $subject, $message, $headers);
+		mailer($to, $subject, $message, $from);
 		
 		header("Location: email-class.php");
 		
@@ -354,12 +353,11 @@ if (user_can(3)) {
 		
 		// Mail if box is checked
 		if ($_POST['email'] == 'checked') {
+			$to = class_maillist($class);
 			$subject = $title;
 			$message = "Your Class has Scheduled a New Event - ". $class ."\n" . date('m/d/Y \@ g:i a', $due_date) . "\n\n" . $content;
-			$address = class_maillist($class);
-			$noreply = noreply();
-			$headers = "From:" . $noreply;
-			mail($address, $subject, $message, $headers);		
+			mailer($to, $subject, $message);
+					
 		}
 			
 		header("Location: new-event.php");
@@ -389,12 +387,8 @@ if (user_can(3)) {
 		$message = $_POST['message'];
 		$message .= '<p><a href="' . siteroot() . 'hsr-admin/register.php">' . siteroot() . 'hsr-admin/register.php</a></p>';
 		$content = '<html><body>' . $message . '</body></html>';
-		$noreply = noreply();
-		$headers = 'From: ' . $noreply . "\r\n";
-		$headers .= 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html charset=iso-8859-1' . "\r\n";
 		
-		mail($email, $subject, $content, $headers);
+		mailer($email, $subject, $content);
 		
 		header('Location: invite.php');
 		

@@ -625,7 +625,7 @@ while ($row = mysql_fetch_array($result)) {
 return $last;
 }
 
-function get_userfirstlastname() {
+function get_username() {
 $name = get_userfirstname() . ' ' . get_userlastname();
 return $name;
 }

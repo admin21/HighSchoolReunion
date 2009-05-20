@@ -46,7 +46,7 @@ $query10 = "UPDATE options
 	WHERE option_name = 'noreply'";
 $result10 = mysql_query($query10);
 
-// Update title
+// Update Privacy Policy
 $query11 = "UPDATE options
 	SET option_value = '$priv'
 	WHERE option_name = 'priv_policy'";

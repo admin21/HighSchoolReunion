@@ -28,23 +28,7 @@ if ($_POST['command'] == 'forgot' &&
 			// Forgot Username
 			$username = $results['user_name'];			
 			$subject = "Forgotten Username";
-			$link = siteroot()."hsr-admin/login.php";
-			$site_name = sitename();
-			$msg		= <<<EOMSG
-<html>
-<body>
-<p>
-You recently requested that we send your username for
-$site_name.  Your new username is:</p>
-
-		<p><strong>$username</strong></p>
-		
-<p>Please log in at this URL:</p>
-
-		<p>$link</p>
-</body>
-</html>	
-EOMSG;
+			$msg = forgotuname_msg($username);
 		} elseif($_POST['forgot_type'] == 'password') {
 			// Generate a random password
 			$alphanum =
@@ -72,38 +56,13 @@ EOMSG;
 				update');
 			
 			$subject = "New Password";
-			$link = siteroot()."hsr-admin/login.php";
-			$site_name = sitename();
-			$msg	= <<<EOMSG
-<html>
-<body>
-<p>
-You recently requested that we send you a new password for
-$site_name.  Your new password is:</p>
-
-<p><strong>$password</strong></p>
-		
-<p>Please log in at this URL:</p>
-
-<p><a href="$link">$link</a></p>
-
-<p><strong>Note:</strong> We recommend that you login as soon
-as possible and change your password.</p>
-</body>
-</html>		
-EOMSG;
+			$msg = forgotpword_msg($password);
 		}
 				
 	// Send the email
 	$to			= $_POST['email'];
-	$noreply = noreply();
-	$from = "High School Reunion <" . $noreply . ">";
-	$headers = "From: $from\r\n";
-	$headers .= "Content-type: text/html\r\n";
-	$headers .= "Reply-to: $from\r\n";
-	$headers .= "X-Mailer: PHP/" . phpversion();
 		
-	mail("$to", "$subject", "$msg", "$headers");
+	mailer($to, $subject, $msg);
 				
 	// Redirect to login
 	header("Location: login.php");
