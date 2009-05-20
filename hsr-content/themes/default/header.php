@@ -15,4 +15,4 @@
 <div id="page-title"><?php get_option('alumni_title'); ?></div>
 <div id="page-subtitle"><?php get_option('tagline'); ?></div>
 </div>
-<div id="nav"><div id="admin-link"><?php admin_link(); ?></div><div id="pagelinks"><?php post_links( ); ?></div></div>
+<div id="nav"><div id="admin-link"><?php admin_link(); ?></div><div id="pagelinks"><?php homepage_link(); ?><?php post_links(true); ?></div></div>

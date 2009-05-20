@@ -323,33 +323,6 @@ function upcoming_events() {
 
 }
 
-
-function post_links($home = true) {
-
-if($home) {
-echo "<span><a href=\"" . siteroot() . "\">Alumni</a></span>";
-}
-
-$query = "SELECT * FROM posts WHERE post_type = 'page'";
-$result = mysql_query($query);
-while($row = mysql_fetch_array($result)) {
-	$id = $row['id'];
-	$title = $row['post_title'];
-	
-echo "<span><a href=\"" . siteroot() . "index.php?p=" . $id . "\">" . $title . "</a></span>";
-	
-	}
-
-}
-
-function admin_link() {
-
-$username = $_COOKIE['user_name'];
-	if (!empty($username)) {
-	echo "<a href=\"" . siteroot() . "hsr-admin/\">Dashboard</a>";
-	}
-}
-
 function show_links() {
 
 $query = "SELECT * FROM links";

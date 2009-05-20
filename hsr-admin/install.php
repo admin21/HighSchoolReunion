@@ -172,7 +172,7 @@ switch($step) {
 				('dark_color', '#CC0000', 'The hex value of the dark color for the admin color scheme'),
 				('light_color', '#FF0000', 'The hex value of the light color for the admin color scheme'),
 				('logo', 'none', 'The name of the img file for the logo'),
-				('homepage', 'none', 'If there is another page you want displayed as the homepage in the links.'),
+				('homepage', 'http://', 'If there is another page you want displayed as the homepage in the links.'),
 				('cur_vers', '.80', 'The current version of High School Reunion. Used for database updates')"; 
 	$result4 = mysql_query($query4);
 	
