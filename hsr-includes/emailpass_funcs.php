@@ -7,7 +7,7 @@ function user_change_password() {
 	
 	// Do new passwords match?
 	if ($_POST['new_password1'] && ($_POST['new_password1'] ==
-		$_POST['new_password2'])) {
+	$_POST['new_password2'])) {
 		// Is password long enough?
 		if (strlen($_POST['new_password1']) >= 6) {
 			// Is the old password correct?

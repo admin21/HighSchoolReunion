@@ -16,7 +16,7 @@ if ($_POST['submit'] == "Change my Password") {
 	if ($worked == 1) {
 		$feedback_str = '<p class="errormess">Password changed | <a href="index.php">Back</a></p>';
 		} else {
-			$feedback_str = "<p class=\"errormess\">$feedback</p>";
+			$feedback_str = '<p class="errormess">' . user_change_password() . '</p>';
 		}
 	}
 	
