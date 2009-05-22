@@ -10,13 +10,11 @@ if (user_can(3)) {
 	
 		case 'class_email':
 		
-		$from = get_username() . " <" . get_useremail() . ">";
-		
 		$to = class_maillist(get_theclass());
 		$subject = $_POST['subject'];
 		$message = $_POST['message'];
 		$from = get_username() . " <" . get_useremail() . ">";
-
+		
 		mailer($to, $subject, $message, $from);
 		
 		header("Location: email-class.php");

@@ -387,9 +387,10 @@ function class_maillist($class) {
 	$query = "SELECT email FROM users WHERE grad_year = '$class'";
 	$result = mysql_query($query);
 	$j = mysql_fetch_array($result);
+	$emails[] = $j['email'];
 	while($row = mysql_fetch_array($result, MYSQL_NUM)) {
-		$emails[] = implode("\t", $row);
-		}
+		$emails[] .= implode("\t", $row);
+	}
 	$emails = implode(",", $emails);
 	return $emails;
 	
@@ -402,9 +403,10 @@ function echo_class_maillist($class) {
 	$query = "SELECT email FROM users WHERE grad_year = '$class'";
 	$result = mysql_query($query);
 	$j = mysql_fetch_array($result);
+	$emails[] = $j['email'];
 	while($row = mysql_fetch_array($result, MYSQL_NUM)) {
-		$emails[] = implode("\t", $row);
-		}
+		$emails[] .= implode("\t", $row);
+	}
 	$emails = implode(",", $emails);
 	echo $emails;
 	
