@@ -18,10 +18,10 @@ site_head($header);
 <p><input name="email" type="text"> Email</p>
 <p>Message<br />
 <textarea class="content" name="message" cols="96" rows="15">
-<?php echo get_userfirstlastname(); ?> wants to invite you to register for 
+<?php echo get_username(); ?> wants to invite you to register for 
 the alumni website <?php echo sitename(); ?>.
 </textarea></p>
-<p align="right"><input name="send" type="submit" value="Send"></p>
+<p align="right"><input name="send" type="submit" disabled="disabled" value="Send"></p>
 
 </form>
 </div>

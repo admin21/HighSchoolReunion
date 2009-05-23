@@ -381,7 +381,7 @@ if (user_can(3)) {
 		case 'invite': 
 		
 		$email = $_POST['email'];
-		$subject = get_userfirstlastname() . ' wants you to join';
+		$subject = get_username() . ' wants you to join';
 		$message = $_POST['message'];
 		$message .= '<p><a href="' . siteroot() . 'hsr-admin/register.php">' . siteroot() . 'hsr-admin/register.php</a></p>';
 		$content = '<html><body>' . $message . '</body></html>';
