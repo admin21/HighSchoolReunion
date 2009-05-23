@@ -345,7 +345,7 @@ if (user_can(3)) {
 		
 		// Mail to admin
 		$email = adminemail();
-		$body = newevent_msg($id);
+		$body = newevent_msg($post_id);
 		$subject = "New Event Added";
 		mailer($email, $subject, $body);
 		

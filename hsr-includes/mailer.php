@@ -1,21 +1,13 @@
 <?php
 
 function mailer($to, $subject, $body, $from = 'noreply') {
-	if($from == 'noreply') {
-		$noreply = noreply();
-		$from = "High School Reunion <" . $noreply . ">";
-	}
+	if($from == 'noreply') $from = "High School Reunion <" . noreply() . ">";
 	$headers = "From: $from\r\n";
 	$headers .= "Content-type: text/html\r\n";
 	$headers .= "X-Mailer: PHP/" . phpversion();
 	
-	$works = mail("$to", "$subject", "$body", "$headers");
-	
-	if($works) {
-		return true;
-	} else {
-		return false;
-	}
+	mail("$to", "$subject", "$body", "$headers");
+
 }
 
 function reg_msg($email) {
@@ -67,12 +59,19 @@ EOMAILBODY;
 }
 
 function newevent_msg($id) {
-	
-	$link = siteroot() . 'hsr-admin//edit-post.php?id=';
+	$query = "SELECT post_author FROM posts WHERE id = '$id' LIMIT 1";
+	$result = mysql_fetch_array(mysql_query($query));
+	$userid = $result['post_author'];
+	$query = "SELECT user_name, first_name, last_name FROM users WHERE user_id = '$userid' LIMIT 1";
+	$result = mysql_fetch_array(mysql_query($query));
+	$name = $result['first_name'] . ' ' . $result['last_name'];
+	$username = $result['user_name'];
+	$site_name = sitename();
+	$link = siteroot() . 'hsr-admin//edit-post.php?id='.$id;
 	$body = <<<EOMAILBODY
 <html>
 <body>
-<p>$user just added an event on $site_name. To view and approve 
+<p>$name ($username) just added an event on $site_name. To view and approve 
 the post to be published visit the link below:</p>
 
 <p><a href="$link">$link</a></p>

@@ -21,7 +21,7 @@ site_head($header);
 <?php echo get_username(); ?> wants to invite you to register for 
 the alumni website <?php echo sitename(); ?>.
 </textarea></p>
-<p align="right"><input name="send" type="submit" disabled="disabled" value="Send"></p>
+<p align="right"><input name="send" type="submit" value="Send"></p>
 
 </form>
 </div>
