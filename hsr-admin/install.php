@@ -22,7 +22,7 @@ if (!file_exists('../hsr-config.php')) {
 	<link rel="stylesheet" href="install.css" type="text/css" />
 </head>
 <body>
-<img src="../img/hsr-logo-med.png" width="250" height="138" />
+<img src="../img/hsr-logo.png" width="250" height="141" />
 <?php
 // Check if alum is installed.
 // create is_alum_installed function

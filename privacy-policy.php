@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<img src="img/hsr-logo-med.png" alt="" />
+<img src="img/hsr-logo.png" width="250" height="141" alt="" />
 <h1>Privacy Policy</h1>
 <h2>HSR's Privacy Policy</h2>
 <h3>How We Use the Information We Collect</h3>
