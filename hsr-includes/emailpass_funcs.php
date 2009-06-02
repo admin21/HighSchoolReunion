@@ -58,9 +58,20 @@ function user_change_email() {
 	if (validate_email($email)) {
 		$hash = md5($email.$hash_padding);
 		
+		$query2 = "SELECT user_id
+				FROM users
+				WHERE email = '$email'";
+		$result2 = mysql_query($query2);
+		
+		if ($result2 && mysql_num_rows($result2) > 0) {
+			$feedback = 'ERROR: Email Address Already Exists';
+			return $feedback;
+		}
+		
 		// Send out a new confirm email with a new hash
 		$user_name = strtolower($_COOKIE['user_name']);
 		$password = strtolower($_POST['password']);
+				
 		$crypt_pass = md5($password.$hash_padding);
 		$query = "UPDATE users
 				SET confirm_hash = '$hash',
