@@ -87,7 +87,7 @@ while($row = mysql_fetch_array($result))
 		if (strlen($row['work_phone']) > 0) 
 			echo '<p>Work Phone: ' . $row['work_phone'];
 		if (strlen($row['work_ext']) > 0)
-			echo 'Ext: ' . $row['work_ext'] . '</p>';
+			echo ' Ext: ' . $row['work_ext'] . '</p>';
 			echo '<p>Email: <a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></p>';
 
 	}
