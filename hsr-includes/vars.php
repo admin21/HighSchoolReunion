@@ -48,35 +48,36 @@ function adminemail() {
 function get_userinfo($type = 'user_name') {
 	$user_name = $_COOKIE['user_name'];
 	
-	$query = "SELECT user_name, first_name, last_name, grad_year, address, city, state, zip, home_phone, cell_phone, work_phone, work_ext, photo, homepage, link1, link2, link3
+	$query = "SELECT user_id, first_name, last_name, grad_year, address, city, state, zip, home_phone, cell_phone, work_phone, work_ext, photo, homepage, link1, link2, link3
 			FROM users
 			WHERE user_name = '$user_name'";
 			
 	$result = mysql_query($query);
 	$user_array = mysql_fetch_array($result);
 	$info = array(
-		user_name 		=> 		$user_name,
-		first_name 		=> 		$user_array['first_name'],
-		last_name 		=> 		$user_array['last_name'],
-		grad_year 		=> 		$user_array['grad_year'],
-		address 		=> 		stripslashes($user_array['address']),
-		city 			=> 		stripslashes($user_array['city']),
-		state 			=> 		stripslashes($user_array['state']),
-		zip 			=> 		stripslashes($user_array['zip']),
-		home_phone 		=> 		stripslashes($user_array['home_phone']),
-		cell_phone 		=> 		stripslashes($user_array['cell_phone']),
-		work_phone 		=> 		stripslashes($user_array['work_phone']),
-		work_ext 		=> 		stripslashes($user_array['work_ext']),
-		photo_url 		=> 		urldecode($user_array['photo']),
-		photo_url 		=> 		stripslashes($photo_url),
-		homepage_url 	=> 		urldecode($user_array['homepage']),
-		homepage_url 	=> 		stripslashes($homepage_url),
-		fav_link1 		=> 		urldecode($user_array['link1']),
-		fav_link1 		=> 		stripslashes($fav_link1),
-		fav_link2 		=> 		urldecode($user_array['link2']),
-		fav_link2 		=> 		stripslashes($fav_link2),
-		fav_link3 		=> 		urldecode($user_array['link3']),
-		fav_link3 		=> 		stripslashes($fav_link3)
+		'user_name' 		=> 		$user_name,
+		'id'				=>		$user_array['user_id'],
+		'first_name' 		=> 		$user_array['first_name'],
+		'last_name' 		=> 		$user_array['last_name'],
+		'grad_year' 		=> 		$user_array['grad_year'],
+		'address'	 		=> 		stripslashes($user_array['address']),
+		'city' 				=> 		stripslashes($user_array['city']),
+		'state' 			=> 		stripslashes($user_array['state']),
+		'zip' 				=> 		stripslashes($user_array['zip']),
+		'home_phone' 		=> 		stripslashes($user_array['home_phone']),
+		'cell_phone' 		=> 		stripslashes($user_array['cell_phone']),
+		'work_phone' 		=> 		stripslashes($user_array['work_phone']),
+		'work_ext' 			=> 		stripslashes($user_array['work_ext']),
+		'photo_url' 		=> 		urldecode($user_array['photo']),
+		'photo_url' 		=> 		stripslashes($photo_url),
+		'homepage_url' 		=> 		urldecode($user_array['homepage']),
+		'homepage_url' 		=> 		stripslashes($homepage_url),
+		'fav_link1' 		=> 		urldecode($user_array['link1']),
+		'fav_link1' 		=> 		stripslashes($fav_link1),
+		'fav_link2' 		=> 		urldecode($user_array['link2']),
+		'fav_link2' 		=> 		stripslashes($fav_link2),
+		'fav_link3' 		=> 		urldecode($user_array['link3']),
+		'fav_link3' 		=> 		stripslashes($fav_link3)
 		);
 	
 	return $info[$type];

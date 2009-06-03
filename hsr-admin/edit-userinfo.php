@@ -15,6 +15,14 @@ if (user_can(3)) {
 		if ($_POST['submit'] == "Save") {
 		// Send data to db
 		
+		
+		// Get grad_year from textbox first
+		if (!empty($_POST['grad_year2'])) {
+			$grad_year = $_POST['grad_year2'];
+		} else {
+			$grad_year = $_POST['grad_year'];
+		}
+		
 		// I'm not bothering to check the stringlength of these
 		// because I'm URL-encoding them
 		$as_address = addslashes($_POST['address']);
@@ -39,7 +47,7 @@ if (user_can(3)) {
 		$as_fname = addslashes($_POST['fname']);
 		$as_mname = addslashes($_POST['mname']);
 		$as_lname = addslashes($_POST['lname']);
-		$as_gradyr = addslashes($_POST['grad_year']);
+		$as_gradyr = addslashes($grad_year);
 		
 		//Don't display http:// as a link
 		if ($_POST['photo_url'] == 'http://') {
@@ -162,6 +170,13 @@ if (user_can(3)) {
 	<p class=left><b>Graduation Year</b><br />
 
     <?php grad_list($username); ?>
+    
+    <em><u>or</u></em>
+    
+	<input name="grad_year2" type="text" value="" size="5" maxlength="4" />
+    <br />
+	</p>
+	<p>* <u>Can't find your class?</u> Just type your graduation year in the box.</p>
 
 	     </p>
 	  <input type="submit" name="submit" value="Save">

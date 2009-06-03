@@ -16,7 +16,7 @@ if ($_POST['submit'] == "Change my Email") {
 	if ($worked == 1) {
 		$feedback_str = '<p class="errormess">A confirmation email has been sent to you | <a href="index.php">Back</a></p>';
 		} else {
-			$feedback_str = "<p class \"errormess\">$feedback</p>";
+			$feedback_str = '<p class "errormess">'.user_change_email().'</p>';
 		}
 	}
 	
@@ -34,7 +34,7 @@ if ($_POST['submit'] == "Change my Email") {
 	<table>
 	<tr>
 	<td width=260>
-	<img src="../img/hsr-logo-med.png" alt="High School Reunion" title="High School Reunion"/>	</td>
+	<img src="../img/hsr-logo.png" width="250" height="141" alt="High School Reunion" title="High School Reunion"/>	</td>
 <td>
 		<?php echo $feedback_str; ?>
 		<div id="admin-hold">

@@ -85,7 +85,7 @@ if ($_POST['command'] == 'forgot' &&
 	<table border=0 cellpadding=10 width="100%">		
 	<tr>
 	<td align=center valign=top width=260>
-	<img src="../img/hsr-logo-med.png" alt="High School Reunion" />	</td>
+	<img src="../img/hsr-logo.png" width="250" height="141" alt="High School Reunion" />	</td>
 	<td bgcolor="ffffff" align=left valign=top width=83%>
 	<h1>Request New Username or Password</h1>
 	<p><b>Forgot your username or password?</b> Don't worry -- simply enter your 

@@ -50,7 +50,7 @@ $php_self = $_SERVER['PHP_SELF'];
 <div id="admin-hold">
 <div id="login-form">
 <div id="spacer"></div>
-<center><img src="../img/hsr-logo-med.png" /></center>
+<center><img src="../img/hsr-logo.png" width="250" height="141" /></center>
 <?php echo $feedback_str; ?>
 <h3>Login</h3>
 <form action="<?php echo $php_self; ?>" method="post">

@@ -10,6 +10,7 @@
  ********************************************************/
 
 require_once('../hsr-config.php');
+require('../hsr-includes/register_funcs.php');
 
 if ($_POST['submit'] == 'Mail Confirmation') {
 	$feedback = user_register();
