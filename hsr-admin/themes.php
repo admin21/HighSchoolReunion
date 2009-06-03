@@ -28,8 +28,8 @@ $dh  = opendir($dir);
 while (false !== ($filename = readdir($dh))) {
     $files[] = $filename;
 }
-$info = array_slice($files, 2);
-foreach($info as $file) {
+asort($files);
+foreach($files as $file) {
 ?>
 <?php //check for broken themes ?>
 <?php if(valid_theme($file)): ?>
