@@ -11,10 +11,10 @@
 	
 	//Settings
 	define('VERSION', '0.8.1'); // HSR Version
-	define('BUILDNUMBER', '119'); // Working Beta Build #
+	define('BUILDNUMBER', '120'); // Working Beta Build #
 	// Remember to increment up after commit
 	
-	define('DEBUGGING', true); // Are we debugging?
+	define('DEBUGGING', false); // Are we debugging?
 	
 	if(DEBUGGING) {
 		error_reporting(E_ALL);

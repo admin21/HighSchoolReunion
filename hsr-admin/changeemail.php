@@ -16,7 +16,7 @@ if ($_POST['submit'] == "Change my Email") {
 	if ($worked == 1) {
 		$feedback_str = '<p class="errormess">A confirmation email has been sent to you | <a href="index.php">Back</a></p>';
 		} else {
-			$feedback_str = "<p class \"errormess\">$feedback</p>";
+			$feedback_str = '<p class "errormess">'.user_change_email().'</p>';
 		}
 	}
 	

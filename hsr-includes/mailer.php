@@ -67,7 +67,7 @@ function newevent_msg($id) {
 	$name = $result['first_name'] . ' ' . $result['last_name'];
 	$username = $result['user_name'];
 	$site_name = sitename();
-	$link = siteroot() . 'hsr-admin//edit-post.php?id='.$id;
+	$link = siteroot() . 'hsr-admin/edit-post.php?id='.$id;
 	$body = <<<EOMAILBODY
 <html>
 <body>

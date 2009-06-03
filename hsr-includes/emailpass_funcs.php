@@ -62,35 +62,41 @@ function user_change_email() {
 				FROM users
 				WHERE email = '$email'";
 		$result2 = mysql_query($query2);
+		$results = mysql_fetch_array($result2);
+		$id = $results['user_id'];
 		
-		if ($result2 && mysql_num_rows($result2) > 0) {
+		if($id == get_userinfo('id')) {
+			$feedback = "ERROR: Already Your Address";
+			return $feedback;
+		} elseif ($result2 && mysql_num_rows($result2) > 0) {
 			$feedback = 'ERROR: Email Address Already Exists';
 			return $feedback;
-		}
-		
-		// Send out a new confirm email with a new hash
-		$user_name = strtolower($_COOKIE['user_name']);
-		$password = strtolower($_POST['password']);
-				
-		$crypt_pass = md5($password.$hash_padding);
-		$query = "UPDATE users
-				SET confirm_hash = '$hash',
-					is_confirmed = 0
-				WHERE user_name = '$user_name'
-				AND password = '$crypt_pass'";
-		$result = mysql_query($query);
-
-		if (!$result || mysql_affected_rows() < 1) {
-		header('Location: error.php');
-			$feedback = 'ERROR: Wrong password';
-			return $feedback;
 		} else {
-			// Send the confirmation email
-			$body = newemail_msg($email);
-			$subject = "New Email Confirmation";
-			mailer($email, $subject, $body);
-			
-			return 1;
+		
+			// Send out a new confirm email with a new hash
+			$user_name = strtolower($_COOKIE['user_name']);
+			$password = strtolower($_POST['password']);
+				
+			$crypt_pass = md5($password.$hash_padding);
+			$query = "UPDATE users
+					SET confirm_hash = '$hash',
+						is_confirmed = 0
+					WHERE user_name = '$user_name'
+					AND password = '$crypt_pass'";
+			$result = mysql_query($query);
+
+			if (!$result || mysql_affected_rows() < 1) {
+			header('Location: error.php');
+				$feedback = 'ERROR: Wrong password';
+				return $feedback;
+			} else {
+				// Send the confirmation email
+				$body = newemail_msg($email);
+				$subject = "New Email Confirmation";
+				mailer($email, $subject, $body);
+	
+				return 1;
+			}
 		}
 		
 	} else {
