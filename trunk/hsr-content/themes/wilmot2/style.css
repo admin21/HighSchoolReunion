@@ -1,0 +1,127 @@
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background-color: #000000;
+	font-size: 12px;
+	text-align: center;
+	background-repeat: repeat-y;
+	background-position: center top;
+	}
+
+#holder {
+	text-align: left;
+	width: 700px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFFFFF;
+	}
+	
+#header {
+	background: url(img/top.jpg);
+	height: 176px;
+	}
+
+#sidebar {
+	float: right;
+	width: 200px;;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+	
+#page {
+	background: url(img/mid.jpg);
+	}
+	
+#content {
+	width: 475px;
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	text-align: justify;
+	}
+	
+#footer {
+	background:url(img/bottom.jpg);
+	text-align: center;
+	font-size: 80%;
+	height: 78px;
+	}
+	
+#footer p {
+	padding-top: 50px;
+	}
+
+.small {
+	font-size: 10px;
+	}
+
+a {
+	color: #CC0000;
+	}
+	
+a:hover {
+	color: #FF0000;
+	}
+	
+.brclear { 
+     clear:both; 
+     height:0; 
+     margin:0;
+     font-size: 1px;
+     line-height: 0px;
+}
+
+#nav {
+	width: 640px;
+	padding: 25px;
+	font-size: 16px;
+	color: #FFFFFF;
+	position: absolute;
+	top: 85px;
+	}
+
+#nav span {
+	margin: 0 2px;
+	padding: 5px;
+	background-color: #000000
+	}
+	
+#nav a {
+	color: #FFFFFF;
+	text-decoration: none;
+	}
+	
+#nav a:hover {
+	color:#CCCCCC;
+	}
+	
+table td {
+	padding: 2px 5px;
+	margin: 2px 5px;
+	}
+	
+table tr.alt {
+	padding: 5px;
+	background-color: #EEEEEE;
+	}
+	
+table th {
+	background-color: #CCCCCC;
+	}
+
+#admin-link a {
+	float: right;
+	padding: 2px 5px;
+	color: #FFFFFF;
+	background-color: #CC0000;
+	border: solid 2px #FFFFFF;
+	}
+	
+#admin-link a:hover {
+	background-color: #FF0000;
+	color: #FFFFFF;
+	}
+	
+.clear {
+	font-size: 1px;
+	clear: both;
+	}
