@@ -3,31 +3,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>High School Reunion Upgrades</title>
+
 <?php include("../hsr-config.php"); ?>
 
 <?php
+
 	if (isset($_GET['p'])) {
 		$page = $_GET['p'];
 	} else {
 		$page = 'check';
 	}
+
 ?>
 </head>
 <body>
 
-<?php switch($page) {
+<?php
+	
+	switch($page) {
 	
 	case 'check':
-	if(hsr_isupdated(CURVERS)) header("Location: upgrade.php?p=uptodate");
-	else header("Location: upgrade.php?p=upgrades");
-	break;
-	
-	case 'uptodate':
+	if(hsr_isupdated(CURVERS)) {
 ?>
-	<h1>Up to Date</h1>
-	<p>It looks like you're already up to date. <a href="index.php">Continue</a>.</p>
-
+		<h1>Up to Date</h1>
+		<p>It looks like you're already up to date. <a href="index.php">Continue</a>.</p>
 <?php
+	} else { 
+?>
+	<h1>Out of Date</h1>
+	<p>It looks like you have to upgrade the database. <a href="upgrade.php?p=upgrade">Continue</a>.</p>
+	
+<?php
+	}
 	
 	break;
 	case 'upgrade':
@@ -47,16 +54,13 @@
 ?>
 </body>
 </html>
-	
+
 <?php
 
 function hsr_update_dbase() {
 
 	$sql = mysql_fetch_array(mysql_query("SELECT option_value FROM options WHERE option_name = 'cur_vers' LIMIT 1"));
 	$cur_vers = $sql['option_value'];
-
-	// It should be 0.8, not .80
-	if($cur_vers == '.80') mysql_query("UPDATE  options SET  option_value =  '0.8' WHERE  option_name = 'cur_vers' LIMIT 1");
 
 	// Array of Database Updates
 	$updates = array(
