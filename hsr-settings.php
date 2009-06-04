@@ -10,7 +10,7 @@
 	
 	
 	//Settings
-	define('VERSION', '0.9'); // HSR Version
+	define('VERSION', '0.8.2'); // HSR Version
 	define('CURVERS', '0.8'); // Current Database version
 	define('BUILDNUMBER', '131'); // Working Beta Build #
 	// Remember to increment up after commit
