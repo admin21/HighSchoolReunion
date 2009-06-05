@@ -59,7 +59,7 @@ function site_footer() {
 ?>
 </div>
 <div id="footer">
-  <div class="bot"><span class="foot-text">High School Reunion | <a href="../privacy-policy.php" target="_blank">Privacy Policy</a> | <a href="http://hsr.joshbetz.org/support/">Support</a> | Version <?php echo VERSION; ?> <?php beta_build_number(); ?></span></div>
+  <div class="bot"><span class="foot-text">High School Reunion | <a href="../privacy-policy.php" target="_blank">Privacy Policy</a> | <a href="http://highschoolreuni.com/docs/">Documentation</a> | <a href="http://highschoolreuni.com/support/">Support</a> | Version <?php echo VERSION; ?> <?php beta_build_number(); ?></span></div>
 </div>
 </body>
 </html>
