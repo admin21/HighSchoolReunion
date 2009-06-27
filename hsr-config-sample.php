@@ -1,4 +1,4 @@
-<?php	
+<?php
 	// Shh... This is secret info. If anyone gets this file we're in big trouble.
 	$dbname = ""; // Database database name
 	$dbuser = ""; // Database Username
