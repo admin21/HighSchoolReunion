@@ -34,5 +34,23 @@ function get_lightcolor() {
 		}
 	return $light;
 }
+
+//Stars to show password length on install
+function pass_stars($pass) {
+		$length = strlen($pass);
+		for($i = 1; $i <= $pass; $i++ ) {
+			echo '*';
+		}
+	}
+
+//Make sure usernames don't have spaces in them
+function no_spaces($uname) {
+	$parts = explode(' ', $uname);
+	if(isset($parts[1])) {
+		return false;
+	} else {
+		return true;
+	}
+}
 	
 ?>

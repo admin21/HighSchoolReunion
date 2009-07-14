@@ -46,6 +46,7 @@ function adminemail() {
 		
 // User Info
 function get_userinfo($type = 'user_name') {
+	
 	$user_name = $_COOKIE['user_name'];
 	
 	$query = "SELECT user_id, first_name, last_name, grad_year, address, city, state, zip, home_phone, cell_phone, work_phone, work_ext, photo, homepage, link1, link2, link3

@@ -212,7 +212,7 @@ switch($step) {
 	<dt><?php echo 'Username'; ?></dt>
 		<dd><code>admin</code></dd>
 	<dt><?php echo 'Password'; ?></dt>
-		<dd><code><?php echo $pass1; ?></code></dd>
+		<dd><code><?php pass_stars($pass1); ?></code></dd>
 	<dt><?php echo 'Login address'; ?></dt>
 		<dd><a href="login.php">login.php</a></dd>
 </dl>
