@@ -21,7 +21,9 @@ while($row = mysql_fetch_array($result)) {
 	}
 }
 
-function fix_spaced_uname() {
-
+function fix_spaced_uname($username) {
+	$query = "SELECT * FROM users WHERE user_name = '$username'";
+	$result = mysql_query($query);
+	$rows = mysql_num_rows($result);
 }
 ?>

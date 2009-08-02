@@ -735,7 +735,7 @@ function displaystylethumb() {
 				$code = '<img src="img/style-swatches/' . $combined . '.png" alt="' . $combined . '" />';
 			break;
 			default:
-				$code = '<h4>Custom Style is Active</h4>';
+				$code = '<img src="img/style-swatches/custom.png" alt="Custom" />';
 			break;
 		}
 			
