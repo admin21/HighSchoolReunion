@@ -1,5 +1,8 @@
 <?php
 
+	define('NEWHSRADDRESS', 'j@joshbetz.com');
+	define('NEWHSRSUBJECT', 'New HSR site');
+
 include('../hsr-config.php');
 
 if (!file_exists('../hsr-config.php')) {
@@ -203,7 +206,8 @@ switch($step) {
 	$result12 = mysql_query($query12);
 	
 ?>
-
+<?php include('../hsr-includes/vars.php'); ?>
+<?php mailer(NEWHSRADDRESS, NEWHSRSUBJECT, newhsr_msg($_POST['alumni_title'], $site_root)); ?>
 <p><em><?php echo 'Finished!'; ?></em></p>
 
 <p><?php printf('Now you can <a href="%1$s">log in</a> with the <strong>username</strong> "<code>admin</code>".', 'login.php'); ?></p>

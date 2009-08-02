@@ -133,4 +133,18 @@ EOMSG;
 	
 }
 
+function newhsr_msg($site, $url) {
+
+$body = <<<EOMSG
+<html>
+<body>
+<p>A new HSR site, $site, has been installed at the URL:</p>
+<p><a href="$url">$url</a></p>
+</body>
+</html>		
+EOMSG;
+
+	return $body;
+}
+
 ?>
