@@ -11,6 +11,12 @@ if (!file_exists('../hsr-config.php')) {
 	You probably just forgot to set one up. It's simple, just edit the <code>hsr-config-sample.php</code> file with your
 	database information. Then rename it to <code>alum-config.php</code>.", "High School Reunion &rsaquo; Error");
 	}
+
+if (!isset($hash_padding) || $hash_padding == "") {
+
+	alum_die("You didn't define a ".'<code>$hash_padding</code>'." in the <code>hsr-config.php</code>. You'll have to go back and put a value in there. It's a security thing. If you don't have a value in there, the passwords are more vulnerable to attack. We're just trying to make sure you stay safe. Thanks!", "High School Reunion &rsaquo; Error");
+
+}
 	
 	if (isset($_GET['step']))
 		$step = $_GET['step'];
@@ -216,7 +222,7 @@ switch($step) {
 	<dt><?php echo 'Username'; ?></dt>
 		<dd><code>admin</code></dd>
 	<dt><?php echo 'Password'; ?></dt>
-		<dd><code><?php pass_stars($pass1); ?></code></dd>
+		<dd><code><?php pass_stars($_POST['admin_password1']); ?></code></dd>
 	<dt><?php echo 'Login address'; ?></dt>
 		<dd><a href="login.php">login.php</a></dd>
 </dl>

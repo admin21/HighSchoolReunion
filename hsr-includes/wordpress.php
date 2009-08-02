@@ -40,7 +40,7 @@ function alum_die( $message, $title = '' ) {
 		$message = "<p>$message</p>";
 	}
 
-	if (strpos($_SERVER['PHP_SELF'], 'wp-admin') !== false)
+	if (strpos($_SERVER['PHP_SELF'], 'hsr-admin') !== false)
 		$admin_dir = '';
 	else
 		$admin_dir = 'hsr-admin/';
@@ -59,7 +59,7 @@ function alum_die( $message, $title = '' ) {
 	<link rel="stylesheet" href="<?php echo $admin_dir; ?>install.css" type="text/css" />
 </head>
 <body>
-	<h1 id="logo"><img alt="High School Reunion" src="<?php echo $admin_dir; ?>images/alumni-logo.png" /></h1>
+	<h1 id="logo"><img alt="High School Reunion" src="<?php echo $admin_dir; ?>img/hsr-logo.png" /></h1>
 	<?php echo $message; ?>
 
 </body>
