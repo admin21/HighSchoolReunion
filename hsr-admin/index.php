@@ -136,6 +136,7 @@ if (user_can(1)) {
 	default: ?>
 <div id="left" class="column">
 <div id="gen-info" class="box">
+<img style="float: right;" src="<?php echo get_avatar($username); ?>" alt="" />
 <h4>General Info</h4>
 <?php general_info($username); ?>
 </div>

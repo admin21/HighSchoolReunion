@@ -45,11 +45,12 @@ function adminemail() {
 }
 		
 // User Info
-function get_userinfo($type = 'user_name') {
+function get_userinfo($type = 'user_name', $username = 'curuser') {
 	
-	$user_name = $_COOKIE['user_name'];
+	if($username == 'curuser') $user_name = $_COOKIE['user_name'];
+	else $user_name = $username;
 	
-	$query = "SELECT user_id, first_name, last_name, grad_year, address, city, state, zip, home_phone, cell_phone, work_phone, work_ext, photo, homepage, link1, link2, link3
+	$query = "SELECT user_id, first_name, last_name, grad_year, email, address, city, state, zip, home_phone, cell_phone, work_phone, work_ext, photo, homepage, link1, link2, link3
 			FROM users
 			WHERE user_name = '$user_name'";
 			
@@ -61,6 +62,7 @@ function get_userinfo($type = 'user_name') {
 		'first_name' 		=> 		$user_array['first_name'],
 		'last_name' 		=> 		$user_array['last_name'],
 		'grad_year' 		=> 		$user_array['grad_year'],
+		'email'				=>		$user_array['email'],
 		'address'	 		=> 		stripslashes($user_array['address']),
 		'city' 				=> 		stripslashes($user_array['city']),
 		'state' 			=> 		stripslashes($user_array['state']),

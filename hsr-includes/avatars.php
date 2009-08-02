@@ -1,20 +1,20 @@
 <?php
 
-	get_avatar($username = '', $size = '80', $rating = 'g', $default = 'i') {
+	function get_avatar($username = '', $size = '80', $rating = 'g', $default = 'i') {
 	
 		if($username == '') {
 			$email = get_userinfo('email');
 		} else {
-			$email = // Fill it in with a new function
+			$email = get_userinfo('email', $username);
 		}
 		
 		$baseurl = "http://www.gravatar.com/avatar/";
 		
-		$hash = md5($email);
+		$hash = md5(strtolower($email));
 		
 		$s = 's='.$size;
 		
-		$r = 'r='.$rating;
+		$r = '&r='.$rating;
 		
 		$d = array(
 			'n'	=>	'none',
@@ -23,7 +23,9 @@
 			'w'	=>	'wavatar'
 		);
 		
-		return $baseurl . $hash . '?' . $s . '&' . $r . '&' . $d;
+		$default = '&d='.$d[$default];
+		
+		return $baseurl . $hash . '?' . $s . $r . $default;
 		
 	}
 
