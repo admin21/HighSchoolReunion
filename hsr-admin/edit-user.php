@@ -1,13 +1,18 @@
 <?php
 
-include('header_footer.php');
 include('../hsr-config.php');
+
+$id = $_GET['id'];
+
+$query = mysql_num_rows(mysql_query("SELECT * FROM users WHERE user_id = '$id' LIMIT 1"));
+
+if($query == 0) header("Location: manage-users.php");
+
+include('header_footer.php');
 
 if (user_can(1)) {
 
 site_head('Edit User');
-
-$id = $_GET['id'];
 
 $query = "SELECT * FROM users WHERE user_id = '$id' LIMIT 1";
 $result = mysql_query($query);
@@ -90,6 +95,7 @@ while ($row = mysql_fetch_array($result)) {
   <?php echo $rank; ?></p>
 <p><strong>Status</strong><br />
   <?php echo $status; ?></p>
+<p><a href="javascript:confirmdelete( 'users', '<?php echo siteroot() ?>', '<?php echo $username ?>', '<?php echo $id ?>' )">Delete</a></p>
 </div>
 <br class="clear" />
 <input name="type" type="hidden" value="user-edit" />
