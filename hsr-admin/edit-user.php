@@ -4,9 +4,17 @@ include('../hsr-config.php');
 
 $id = $_GET['id'];
 
+$pospage = $_GET['pos'];
+$posar = explode(':', $pospage);
+$page = $posar[0];
+$num = $posar[1];
+if($num == 1) $page = $posar[0] - 1;
+
+$ref = $_SERVER['HTTP_REFERER'];
+
 $query = mysql_num_rows(mysql_query("SELECT * FROM users WHERE user_id = '$id' LIMIT 1"));
 
-if($query == 0) header("Location: manage-users.php");
+if($query == 0) header("Location: manage-users.php?page=$page");
 
 include('header_footer.php');
 
@@ -56,6 +64,7 @@ while ($row = mysql_fetch_array($result)) {
 ?>
 
 <div id="holder">
+<a href="<?php echo $ref; ?>">Back to Users</a>
 <form action="post.php" method="post">
 <div class="left-col">
 <p><strong>Username</strong><br />

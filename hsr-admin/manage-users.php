@@ -64,6 +64,7 @@ usernav(); ?>
 
 $query = "SELECT * FROM users ORDER BY user_id LIMIT $offset,10";
 $result = mysql_query($query);
+$num = mysql_num_rows($result);
 while($row = mysql_fetch_array($result))
 	{
 	  /* Changes every other comment to a different class */	  
@@ -94,7 +95,6 @@ while($row = mysql_fetch_array($result))
 		}
 ?>		
 	 
-	 
 	  <tr class="<?php echo $oddcomment?>">
 	  <td><?php echo $id ?></td>
 	  <td><?php echo $username ?></td>
@@ -103,7 +103,7 @@ while($row = mysql_fetch_array($result))
 	  <td><?php echo $class ?></td>
 	  <td><?php echo $rank ?></td>
 	  <td><?php echo $status ?></td>
-	  <td><a href="<?php echo siteroot() ?>hsr-admin/edit-user.php?id=<?php echo $id ?>">Edit</a></td>
+	  <td><a href="<?php echo siteroot() ?>hsr-admin/edit-user.php?id=<?php echo $id ?>&pos=<?php echo $page; ?>:<?php echo $num; ?>">Edit</a></td>
 	  <td><a href="javascript:confirmdelete( 'users', '<?php echo siteroot() ?>', '<?php echo $username ?>', '<?php echo $id ?>' )">Delete</a></td>
 	  </tr>
 <?php	} ?>
