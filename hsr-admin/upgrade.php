@@ -4,6 +4,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>High School Reunion Upgrades</title>
 
+<style type="text/css">
+html {
+	background: #EFEFEF;
+}
+a {
+	color: #FF0000;
+}
+body {
+	background: #fff;
+	margin: 22px auto;
+	width: 744px;
+	padding: 22px;
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #464646;
+	-moz-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+}
+p {
+	font-size: 2em;
+	font-weight: normal;
+}
+h1 {
+	font-size: 8em;
+	margin: 0 0 .4em 0;
+	font-weight: normal;
+	color: #333;
+}
+</style>
+
 <?php include("../hsr-config.php"); ?>
 
 <?php

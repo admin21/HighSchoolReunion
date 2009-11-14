@@ -4,6 +4,7 @@
 	define('NEWHSRSUBJECT', 'New HSR site');
 
 include('../hsr-config.php');
+include('../hsr-includes/emailpass_funcs.php');
 
 if (!file_exists('../hsr-config.php')) {
 	
@@ -46,8 +47,8 @@ switch($step) {
 		break;
 	case 1:
 ?>
-<h1><?php echo 'First Step'; ?></h1>
-<p><?php echo "First we need to get some basic information, but you can always change it later if you need to."; ?></p>
+<h1>First Step</h1>
+<p>First we need to get some basic information, but you can always change it later if you need to.</p>
 
 <div class="big-form">
 <form id="setup" method="post" action="install.php?step=2">
@@ -56,20 +57,8 @@ switch($step) {
 			<th width="33%"><?php echo 'Alumni Title:'; ?></th>
 			<td><input name="alumni_title" type="text" id="alumni_title" size="25" /></td>
 		</tr>
-		<tr>
-			<th><?php echo 'Tagline:'; ?></th>
-			<td><input name="tagline" type="text" id="tagline" size="25"  /></td>
-		<tr>
 			<th><?php echo 'Admin Email:'; ?></th>
 			<td><input name="admin_email" type="text" id="alumni_email" size="25" /></td>
-		</tr>
-		<tr>
-			<th><?php echo 'Admin Password:'; ?></th>
-			<td><input name="admin_password1" type="password" id="admin_password" size="25"  /></td>
-		</tr>
-		<tr>
-			<th><?php echo 'Admin Password (again):'; ?></th>
-			<td><input name="admin_password2" type="password" id="admin_password" size="25"  /></td>
 		</tr>
 		<tr>
 			<th><?php echo 'Site Root:'; ?></th>
@@ -92,28 +81,20 @@ switch($step) {
 		$alumni_title = stripslashes($_POST['alumni_title']);
 		$tagline = $_POST['tagline'];
 		$admin_email = stripslashes($_POST['admin_email']);
-		$pass1 = $_POST['admin_password1'];
-		$pass2 = $_POST['admin_password2'];
+		$password = random_pass();
 		$site_root = format_root($_POST['site_root']);
 		$noreply = $_POST['noreply'];
-		$crypt_pass = md5($pass1.$hash_padding);
+		$crypt_pass = md5($password.$hash_padding);
 		$user_ip = $_SERVER['REMOTE_ADDR'];
 		$hash = md5($admin_email.$hash_padding);
 		// check e-mail address
 		if (empty($admin_email)) {
 			die("<strong>ERROR</strong>: please type your e-mail address");
 		}
-		
-		// check that passwords are the same
-		if ($pass1 != $pass2) {
-			die("<strong>ERROR</strong>: passwords are not the same");
-		} else if (strlen($pass1) < 6) {
-			die("<strong>ERROR</strong>: the password needs to be at least 6 characters"); 
-		}
 
 ?>
-<h1><?php echo 'Second Step'; ?></h1>
-<p><?php echo 'Now we&#8217;re creating the database tables'; ?></p>
+<h1>Second Step</h1>
+<p>Now we're creating the database tables</p>
 
 
 <?php
@@ -171,7 +152,6 @@ switch($step) {
 	// Insert Alumni Title
 	$query4 = "INSERT INTO options (option_name, option_value, option_description)
 				VALUES ('alumni_title', '$alumni_title', 'The title of this section of your site'),
-				('tagline', '$tagline', 'Short tagline'),
 				('site_root', '$site_root', 'The web address of this section of your site'),
 				('noreply', '$noreply', 'An email address used only to send user information'),
 				('priv_policy', 'You can have your own privacy policy or delete this', 'The Privacy Policy'),
@@ -213,8 +193,8 @@ switch($step) {
 	
 ?>
 <?php include('../hsr-includes/vars.php'); ?>
-<?php mailer(NEWHSRADDRESS, NEWHSRSUBJECT, newhsr_msg($_POST['alumni_title'], $site_root)); ?>
-<p><em><?php echo 'Finished!'; ?></em></p>
+<?php mailer(NEWHSRADDRESS, NEWHSRSUBJECT, newhsr_msg($_POST['alumni_title'])); ?>
+<p><em>Finished!</em></p>
 
 <p><?php printf('Now you can <a href="%1$s">log in</a> with the <strong>username</strong> "<code>admin</code>".', 'login.php'); ?></p>
 
@@ -222,17 +202,17 @@ switch($step) {
 	<dt><?php echo 'Username'; ?></dt>
 		<dd><code>admin</code></dd>
 	<dt><?php echo 'Password'; ?></dt>
-		<dd><code><?php pass_stars($_POST['admin_password1']); ?></code></dd>
+		<dd><code><?php echo $password; ?></code></dd>
 	<dt><?php echo 'Login address'; ?></dt>
 		<dd><a href="login.php">login.php</a></dd>
 </dl>
-<p><?php echo 'That&#8217;s it. Did you think there would be more? Nope, all done!'; ?></p>
+<p>Copy that password. That's just temporary, so you might want to change that when you get logged in</p>
 
 <?php
 		break;
 }
 ?>
 
-<p id="footer"><?php echo 'High School Reunion'; ?></p>
+<p id="footer">High School Reunion</p>
 </body>
 </html>

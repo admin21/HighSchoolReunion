@@ -29,6 +29,7 @@ while ($row = mysql_fetch_array($result)) {
 	$firstname = $row['first_name'];
 	$maidname = $row['maiden_name'];
 	$lastname = $row['last_name'];
+	$class = $row['grad_year'];
 	$email = $row['email'];
 	$rank = $row['rank'];
 	$status = $row['status'];
@@ -64,7 +65,7 @@ while ($row = mysql_fetch_array($result)) {
 ?>
 
 <div id="holder">
-<a href="<?php echo $ref; ?>">Back to Users</a>
+<a href="manage-users.php?page=<?php echo $page; ?>">Back to Users</a>
 <form action="post.php" method="post">
 <div class="left-col">
 <p><strong>Username</strong><br />
@@ -75,6 +76,8 @@ while ($row = mysql_fetch_array($result)) {
   <input name="maidname" type="text" value="<?php echo $maidname; ?>" /></p>
 <p><strong>Last Name</strong><br />
   <input name="lastname" type="text" value="<?php echo $lastname; ?>" /></p>
+<p><strong>Class</strong><br />
+  <input name="class" type="text" value="<?php echo $class; ?>" /></p>
 <p><strong>Email</strong><br />
   <input name="email" type="text" value="<?php echo $email; ?>" /></p>
 <p><strong>Rank</strong><br />
@@ -108,6 +111,7 @@ while ($row = mysql_fetch_array($result)) {
 </div>
 <br class="clear" />
 <input name="type" type="hidden" value="user-edit" />
+<input name="pos" type="hidden" value="<?php echo $pospage; ?>" />
 <input name="id" type="hidden" value="<?php echo $id; ?>"  />
 <input name="submit" type="submit" value="Save">
 </form>

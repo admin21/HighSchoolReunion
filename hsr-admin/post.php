@@ -60,6 +60,7 @@ if (user_can(3)) {
 		$firstname = $_POST['firstname'];
 		$maidname = $_POST['maidname'];
 		$lastname = $_POST['lastname'];
+		$class = $_POST['class'];
 		$email = $_POST['email'];
 		$rank = $_POST['rank'];
 		$status = $_POST['status'];
@@ -75,6 +76,7 @@ if (user_can(3)) {
 			SET first_name = '$firstname',
 				maiden_name = '$maidname',
 				last_name = '$lastname',
+				grad_year = '$class',
 				email = '$email',
 				rank = '$rank',
 				status = '$status'
@@ -100,7 +102,8 @@ if (user_can(3)) {
 				site_footer();
 				}		
 		} else {
-			header("Location: edit-user.php?id=$id");
+			$pospage = $_POST['pos'];
+			header("Location: edit-user.php?id=$id&pos=$pospage");
 		}
 		
 		break;
